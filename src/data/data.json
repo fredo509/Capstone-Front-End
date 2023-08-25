@@ -25,13 +25,13 @@
   },
   {
     "name": "Room E",
-    "description": "Roome E desc",
+    "description": "Room E desc",
     "price": 20,
     "img": "https://placehold.co/300x300"
   },
   {
     "name": "Room F",
-    "description": "Roome F desc",
+    "description": "Room F desc",
     "price": 20,
     "img": "https://placehold.co/300x300"
   }
