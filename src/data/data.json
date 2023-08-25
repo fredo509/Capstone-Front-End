@@ -3,36 +3,42 @@
     "name": "Room A",
     "description": "Room A desc",
     "price": 20,
-    "img": "https://placehold.co/300x300"
+    "img": "https://placehold.co/300x300",
+    "reserved": true
   },
   {
     "name": "Room B",
     "description": "Room B desc",
     "price": 20,
-    "img": "https://placehold.co/300x300"
+    "img": "https://placehold.co/300x300",
+    "reserved": false
   },
   {
     "name": "Room C",
     "description": "Room C desc",
     "price": 20,
-    "img": "https://placehold.co/300x300"
+    "img": "https://placehold.co/300x300",
+    "reserved": true
   },
   {
     "name": "Room D",
     "description": "Room D desc",
     "price": 20,
-    "img": "https://placehold.co/300x300"
+    "img": "https://placehold.co/300x300",
+    "reserved": false
   },
   {
     "name": "Room E",
     "description": "Room E desc",
     "price": 20,
-    "img": "https://placehold.co/300x300"
+    "img": "https://placehold.co/300x300",
+    "reserved": true
   },
   {
     "name": "Room F",
     "description": "Room F desc",
     "price": 20,
-    "img": "https://placehold.co/300x300"
+    "img": "https://placehold.co/300x300",
+    "reserved": false
   }
 ]

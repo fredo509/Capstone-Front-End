@@ -4,19 +4,16 @@ import Card from './Card';
 import '../styles/Reservations.css';
 
 function Reservations() {
-  let cardRendering;
-
-  if (data.length > 0) {
-    cardRendering = data.map((item) => (
-      <Card
-        key={item.id}
-        name={item.name}
-        description={item.description}
-        price={item.price}
-        img={item.img}
-      />
-    ));
-  }
+  const roomsReserved = data.filter((el) => el.reserved === true);
+  const cardRendering = roomsReserved.map((el) => (
+    <Card
+      key={el.id}
+      name={el.name}
+      description={el.description}
+      price={el.price}
+      img={el.img}
+    />
+  ));
 
   return (
     <>
