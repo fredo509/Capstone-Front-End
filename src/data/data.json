@@ -1,0 +1,38 @@
+[
+  {
+    "name": "Room A",
+    "description": "Room A desc",
+    "price": 20,
+    "img": "https://placehold.co/300x300"
+  },
+  {
+    "name": "Room B",
+    "description": "Room B desc",
+    "price": 20,
+    "img": "https://placehold.co/300x300"
+  },
+  {
+    "name": "Room C",
+    "description": "Room C desc",
+    "price": 20,
+    "img": "https://placehold.co/300x300"
+  },
+  {
+    "name": "Room D",
+    "description": "Room D desc",
+    "price": 20,
+    "img": "https://placehold.co/300x300"
+  },
+  {
+    "name": "Room E",
+    "description": "Roome E desc",
+    "price": 20,
+    "img": "https://placehold.co/300x300"
+  },
+  {
+    "name": "Room F",
+    "description": "Roome F desc",
+    "price": 20,
+    "img": "https://placehold.co/300x300"
+  }
+]
