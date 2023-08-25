@@ -2,7 +2,7 @@ import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import './App.css';
 import Reservations from './components/Reservations';
 import Navbar from './components/navbar';
-import Home from './components/home';
+import Home from './components/Home.jsx';
 
 function App() {
   return (
