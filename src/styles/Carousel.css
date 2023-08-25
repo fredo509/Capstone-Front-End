@@ -13,6 +13,7 @@
 
 .embla__viewport {
   overflow: hidden;
+  margin-left: 10%;
 }
 
 .embla__container {
@@ -26,7 +27,7 @@
   justify-content: center;
   align-items: center;
   flex: 0 0 var(--slide-size);
-  min-width: 0;
+  margin-left: 10%;
   padding-left: var(--slide-spacing);
   position: relative;
   background-color: #e5e1e17a;
