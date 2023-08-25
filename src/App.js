@@ -1,8 +1,8 @@
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import './App.css';
-import Reservations from './components/Reservations.jsx';
-import Navbar from './components/navbar.jsx';
-import Home from './components/home.jsx';
+import Reservations from './components/Reservations';
+import Navbar from './components/navbar';
+import Home from './components/home';
 
 function App() {
   return (
