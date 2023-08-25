@@ -1,4 +1,4 @@
-import React, { useRef, useEffect } from 'react';
+import React, { useRef, useEffect, useMemo } from 'react';
 import { PropTypes } from 'prop-types';
 import useEmblaCarousel from 'embla-carousel-react';
 import data from '../data/data.json';
@@ -9,10 +9,13 @@ const EmblaCarousel = (props) => {
   const [emblaRef, embla] = useEmblaCarousel(options);
   const containerRef = useRef();
 
-  const chunkedData = [];
-  for (let i = 0; i < data.length; i += 3) {
-    chunkedData.push(data.slice(i, i + 3));
-  }
+  const chunkedData = useMemo(() => {
+    const chunkedArray = [];
+    for (let i = 0; i < data.length; i += 3) {
+      chunkedArray.push(data.slice(i, i + 3));
+    }
+    return chunkedArray;
+  }, []);
 
   useEffect(() => {
     if (embla) {
@@ -42,7 +45,7 @@ const EmblaCarousel = (props) => {
         }
       });
     }
-  }, [embla]);
+  }, [embla, chunkedData]);
 
   return (
     <div className="embla">
