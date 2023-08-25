@@ -2,7 +2,6 @@ import React, { useRef, useEffect } from 'react';
 import { PropTypes } from 'prop-types';
 import useEmblaCarousel from 'embla-carousel-react';
 import data from '../data/data.json';
-// import Card from './Card';
 import '../styles/Carousel.css';
 
 const EmblaCarousel = (props) => {
@@ -54,6 +53,7 @@ const EmblaCarousel = (props) => {
               <div className="card-container" />
               <div className="card-container" />
               <div className="card-container" />
+              <p>ArrowRight</p>
             </div>
           ))}
         </div>

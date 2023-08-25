@@ -4,3 +4,22 @@
   scroll-behavior: smooth;
   box-sizing: border-box;
 }
+
+
+/* Global Variables */
+
+.flex {
+  display: flex;
+}
+
+/* Nav Bar */
+
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 250px; /* Adjust the width as needed */
+  height: 100vh; /* Set the height to cover the entire viewport */
+  background-color: #fff; /* Set the background color */
+  box-shadow: 1px 2px 5px rgba(0, 0, 0, 1); /* Add a shadow */
+}
