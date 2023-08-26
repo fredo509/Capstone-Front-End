@@ -11,7 +11,7 @@ const options = {
 const SLIDE_COUNT = data.length / 3;
 const slides = Array.from(Array(SLIDE_COUNT).keys()).map(() => data);
 
-const home = () => (
+const Home = () => (
   <>
     <div className="home-container">
       <div className="flex home-header">
@@ -25,4 +25,4 @@ const home = () => (
   </>
 );
 
-export default home;
+export default Home;

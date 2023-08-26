@@ -37,8 +37,16 @@ const EmblaCarousel = (props) => {
                   alt="Your alt text"
                 />
               </a>
-              <p>${cardData.description}</p>
-              <p>${cardData.price}</p>
+              <div className="home-card-content">
+                <p>${cardData.description}</p>
+                <p>
+                  $
+                  ${cardData.price}
+                </p>
+              </div>
+              <div>
+                <button type="button" className="btn">Reserve</button>
+              </div>
             `;
             card.appendChild(newCardContent);
           });
