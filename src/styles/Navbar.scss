@@ -35,37 +35,35 @@ $gray-color: #474747;
         }
 
         * {
-            margin: 1vh 0;
+            margin: 0.5vh 0;
         }
 
         .navItem {
+            display: flex;
             width: 90%;
-            height: 5vh;
-            color: $gray-color;
-            padding: 5px;
-    
+
             a {
                 text-decoration: none;
                 color: $gray-color;
-                transition: all 0.3s;
+                transition: color 0.3s ease-in-out;
+                width: 100%;
+                padding: 15px;
             }
 
-            a:hover {
-                color: $green-color;
+            .active {
+                background-color: $green-color;
+                color: #fff;
             }
+
         }
+    }
 
-        .active {
-            background-color: $green-color;
-            color: white;
-
-            a {
-                color: white;
-            }
-
-            a:hover {
-                color: $gray-color;
-            }
+    .navIcons {
+        margin-top: 25vh;
+        color: $gray-color;
+       
+        * {
+            padding: 0 10px;
         }
     }
 }
