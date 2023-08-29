@@ -12,7 +12,7 @@ const Navbar = () => (
         <NavLink exact to="/" activeClassName="active">Home</NavLink>
       </li>
       <li className="navItem">
-        <NavLink to="/rooms" activeClassName="active">Make a reservation</NavLink>
+        <NavLink to="/addReservation" activeClassName="active">Make a reservation</NavLink>
       </li>
       <li className="navItem">
         <NavLink to="/reservations" activeClassName="active">My Reservations</NavLink>
