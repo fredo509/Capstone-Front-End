@@ -3,38 +3,42 @@ $gray-color: #474747;
 
 .home-container {
   margin-left: 250px;
+  height: 100vh;
   position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 
-  .arrows {
-    width: 100%;
-
-    .arrow-left,
-    .arrow-right {
-      position: absolute;
-      width: 100px;
-      background-color: $green-color;
-      font-size: 2.5rem;
-      color: white;
-      cursor: pointer;
-      padding: 20px;
-      transition: all 0.3s ease-in-out;
-      top: 50%;
-      z-index: 5;
-    }
-
-    .arrow-left {
-      left: 0;
-      border-top-right-radius: 50px;
-      border-bottom-right-radius: 50px;
-      z-index: 1;
-    }
-
-    .arrow-right {
-      right: 0;
-      border-top-left-radius: 50px;
-      border-bottom-left-radius: 50px;
-    }
+  .react-multi-carousel-list {
+    height: 50vh;
   }
+
+  .react-multiple-carousel__arrow {
+    width: 100px;
+    background-color: $green-color;
+    color: white;
+    cursor: pointer;
+    padding: 20px;
+    transition: all 0.3s ease-in-out;
+    top: 50%;
+    z-index: 5;
+    border-radius: 0;
+  }
+
+  .react-multiple-carousel__arrow--left {
+    left: 0;
+    border-top-right-radius: 50px;
+    border-bottom-right-radius: 50px;
+    z-index: 1;
+  }
+
+  .react-multiple-carousel__arrow--right {
+    right: 0;
+    border-top-left-radius: 50px;
+    border-bottom-left-radius: 50px;
+    z-index: 1;
+  }
+
 }
 
 .home-header {
