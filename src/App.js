@@ -5,6 +5,7 @@ import Reservations from './components/Reservations';
 import Navbar from './components/navbar';
 import Home from './components/home';
 import Rooms from './components/RoomList';
+import DeleteRooms from './components/DeleteRooms';
 
 function App() {
   return (
@@ -14,6 +15,7 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="/reservations" element={<Reservations />} />
         <Route path="/rooms" element={<Rooms />} />
+        <Route path="/deleteRooms" element={<DeleteRooms />} />
       </Routes>
     </BrowserRouter>
   );
