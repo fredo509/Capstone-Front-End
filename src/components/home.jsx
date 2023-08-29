@@ -16,6 +16,8 @@ const Home = () => {
   };
   return (
     <section className="home-container">
+      <h1 className="home-title">All suites</h1>
+      <p className="home-brief">Please click on any of the suites to get more information</p>
       <Carousel responsive={responsive}>
         <div>Item 1</div>
         <div>Item 2</div>
