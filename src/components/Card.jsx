@@ -14,6 +14,8 @@ const Card = ({
         $
         {price}
       </p>
+      {/* Onclick will handle delete function */}
+      <button onClick type="button">Delete</button>
     </div>
   </div>
 );

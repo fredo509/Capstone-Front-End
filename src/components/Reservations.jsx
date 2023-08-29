@@ -2,6 +2,7 @@ import React from 'react';
 import data from '../data/data.json';
 import Card from './Card';
 import '../styles/Reservations.css';
+import '../styles/Home.scss';
 
 function Reservations() {
   const roomsReserved = data.filter((el) => el.reserved === true);
@@ -12,6 +13,7 @@ function Reservations() {
       description={el.description}
       price={el.price}
       img={el.img}
+      className="card"
     />
   ));
 

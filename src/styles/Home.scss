@@ -31,8 +31,21 @@ $light-gray-color: #8f8f8f;
   }
 
   .react-multi-carousel-list {
-    height: 50vh;
     width: 100%;
+  }
+
+  .react-multi-carousel-track  {
+    margin-left: 5%;
+  }
+
+  .react-multi-carousel-item {
+    align-items: center;
+    display: flex;
+    justify-content: center
+  }
+
+  .react-multi-carousel-item button {
+    display: none;
   }
 
   .react-multiple-carousel__arrow {
