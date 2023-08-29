@@ -1,8 +1,21 @@
 import '../styles/Home.scss';
 import Carousel from 'react-multi-carousel';
 import 'react-multi-carousel/lib/styles.css';
+import data from '../data/data.json';
+import Card from './Card';
 
 const Home = () => {
+  const cardRendering = data.map((el) => (
+    <Card
+      key={el.id}
+      name={el.name}
+      description={el.description}
+      price={el.price}
+      img={el.img}
+      className="card"
+    />
+  ));
+
   const responsive = {
     superLargeDesktop: {
     // the naming can be any, depends on you.
@@ -19,12 +32,7 @@ const Home = () => {
       <h1 className="home-title">All suites</h1>
       <p className="home-brief">Please click on any of the suites to get more information</p>
       <Carousel responsive={responsive}>
-        <div>Item 1</div>
-        <div>Item 2</div>
-        <div>Item 3</div>
-        <div>Item 4</div>
-        <div>Item 5</div>
-        <div>Item 6</div>
+        {cardRendering}
       </Carousel>
     </section>
   );

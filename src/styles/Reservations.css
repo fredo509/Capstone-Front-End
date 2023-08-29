@@ -1,8 +1,21 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;900&display=swap');
+
 .reservations-container {
   display: flex;
   justify-content: center;
-  margin-left: 10%;
+  margin-left: 20%;
   margin-bottom: 20%;
+}
+
+.title {
+  text-align: center;
+  margin-top: 5%;
+  margin-bottom: 2%;
+  font-size: 4rem;
+  font-weight: 900;
+  text-transform: uppercase;
+  color: #474747;
+  letter-spacing: 0.5rem;
 }
 
 .grid {
@@ -10,6 +23,17 @@
   grid-template-columns: 1fr 1fr 1fr;
   gap: 30px;
   align-items: center;
+}
+
+.delete-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 30px;
+  align-items: center;
+}
+
+.grid button {
+  display: none;
 }
 
 .display-card-title {

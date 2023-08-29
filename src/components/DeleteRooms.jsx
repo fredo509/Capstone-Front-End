@@ -2,11 +2,9 @@ import React from 'react';
 import data from '../data/data.json';
 import Card from './Card';
 import '../styles/Reservations.css';
-import '../styles/Home.scss';
 
-function Reservations() {
-  const roomsReserved = data.filter((el) => el.reserved === true);
-  const cardRendering = roomsReserved.map((el) => (
+const DeleteRooms = () => {
+  const cardRendering = data.map((el) => (
     <Card
       key={el.id}
       name={el.name}
@@ -20,15 +18,15 @@ function Reservations() {
   return (
     <>
       <div className="home-header">
-        <h1 className="title">My Reservations</h1>
+        <h1 className="title">Select a room to delete</h1>
       </div>
       <div className="reservations-container flex">
-        <div className="grid">
+        <div className="delete-grid">
           {cardRendering}
         </div>
       </div>
     </>
   );
-}
+};
 
-export default Reservations;
+export default DeleteRooms;
