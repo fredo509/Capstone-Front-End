@@ -1,62 +1,63 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;900&display=swap');
+
 $green-color: #97bf11;
 $gray-color: #474747;
+$light-gray-color: #8f8f8f;
 
 .home-container {
   margin-left: 250px;
+  height: 100vh;
   position: relative;
-
-  .arrows {
-    width: 100%;
-
-    .arrow-left,
-    .arrow-right {
-      position: absolute;
-      width: 100px;
-      background-color: $green-color;
-      font-size: 2.5rem;
-      color: white;
-      cursor: pointer;
-      padding: 20px;
-      transition: all 0.3s ease-in-out;
-      top: 50%;
-      z-index: 5;
-    }
-
-    .arrow-left {
-      left: 0;
-      border-top-right-radius: 50px;
-      border-bottom-right-radius: 50px;
-      z-index: 1;
-    }
-
-    .arrow-right {
-      right: 0;
-      border-top-left-radius: 50px;
-      border-bottom-left-radius: 50px;
-    }
-  }
-}
-
-.home-header {
-  min-height: 10vh;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  margin-top: 5%;
-  margin-bottom: 5%;
-}
+  font-family: 'Montserrat', sans-serif;
 
-.title {
-  font-size: 5rem;
-}
+  .home-title {
+    font-size: 4rem;
+    font-weight: 900;
+    text-transform: uppercase;
+    color: $gray-color;
+    letter-spacing: 0.5rem;
+  }
 
-.header-text {
-  color: gray;
-  font-size: 2em;
-}
+  .home-brief {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: $light-gray-color;
+    margin: 2vh 0;
+    text-transform: capitalize;
+  }
 
-.header-subtext {
-  color: gray;
-  font-size: 1.5em;
+  .react-multi-carousel-list {
+    height: 50vh;
+    width: 100%;
+  }
+
+  .react-multiple-carousel__arrow {
+    width: 100px;
+    background-color: $green-color;
+    color: white;
+    cursor: pointer;
+    padding: 20px;
+    transition: all 0.3s ease-in-out;
+    top: 50%;
+    z-index: 5;
+    border-radius: 0;
+  }
+
+  .react-multiple-carousel__arrow--left {
+    left: 0;
+    border-top-right-radius: 50px;
+    border-bottom-right-radius: 50px;
+    z-index: 1;
+  }
+
+  .react-multiple-carousel__arrow--right {
+    right: 0;
+    border-top-left-radius: 50px;
+    border-bottom-left-radius: 50px;
+    z-index: 1;
+  }
 }
