@@ -20,7 +20,7 @@ const DeleteRooms = () => {
       <div className="home-header">
         <h1 className="title">Select a room to delete</h1>
       </div>
-      <div className="reservations-container flex">
+      <div className="delete-container flex">
         <div className="delete-grid">
           {rooms.map((room) => (
             <Card
