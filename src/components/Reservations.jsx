@@ -1,26 +1,21 @@
-import React from 'react';
-import { useSelector } from 'react-redux';
-// import data from '../data/data.json';
-import Card from './Card';
+import React, { useEffect } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
+import { fetchReservations } from '../redux/reservationsSlice';
+// import Card from './Card';
 import '../styles/Reservations.css';
 import '../styles/Home.scss';
 
 function Reservations() {
-  // const dispatch = useDispatch();
-  const { rooms } = useSelector((state) => state.rooms);
-
-  const roomsReserved = rooms.filter((el) => el.reserved === true);
-  const cardRendering = roomsReserved.map((el) => (
-    <Card
-      id={el.id}
-      key={el.id}
-      name={el.name}
-      description={el.description}
-      cost={el.cost}
-      photo={el.photo}
-      className="card"
-    />
-  ));
+  // Needs to:
+  // Display reservations (from reservation table)
+  // Be able to delete a reservation (from reservation table)
+  const dispatch = useDispatch();
+  const { status, reservations } = useSelector((state) => state.reservations);
+  useEffect(() => {
+    if (status === 'idle') {
+      dispatch(fetchReservations(2));
+    }
+  }, [status, dispatch]);
 
   return (
     <>
@@ -29,7 +24,15 @@ function Reservations() {
       </div>
       <div className="reservations-container flex">
         <div className="grid">
-          {cardRendering}
+          {reservations.map((reservation, i) => {
+            console.log(reservation.rooms[i].name);
+            return (
+              <div key={reservation.id}>
+                <p>{reservation.city}</p>
+                <p>{reservation.rooms[i].name}</p>
+              </div>
+            );
+          })}
         </div>
       </div>
     </>

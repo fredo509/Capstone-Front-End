@@ -1,0 +1,59 @@
+import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
+import axios from 'axios';
+
+const initialState = {
+  status: "idle",
+  deletedReservation:[],
+  loading: false,
+}
+
+const url = 'http://localhost:3000';
+
+// Delete data from the reservations table
+
+export const deleteReservation = createAsyncThunk(
+  'reservations/deleteReservation',
+  async ({ reservationId, userId }) => {
+    try {
+      await axios.delete(
+        `${url}/users/${userId}/reservations/${reservationId}`,
+      );
+      return {
+        reservationId,
+        userId,
+      };
+    } catch (error) {
+      console.error('Delete error:', error);
+      throw error;
+    }
+  },
+);
+
+// Delete reservation slice
+
+export const deleteReservationSlice = createSlice({
+  name: 'reservationsDelete',
+  initialState,
+  reducers: {
+    deleteReservation: (state) => {
+      state.deletedReservation = [];
+    },
+  },
+  extraReducers: (build) => {
+    build
+      .addCase(deleteReservation.pending, (state) => {
+        state.loading = true;
+      })
+      .addCase(deleteReservation.fulfilled, (state, action) => {
+        state.loading = false;
+        const { reservationId, userId } = action.payload;
+        state.deletedReservation.push({ reservationId, userId });
+      })
+      .addCase(deleteReservation.rejected, (state) => {
+        state.loading = false;
+      })
+  },
+});
+
+export const { restartDeletedReservation } = deleteReservationSlice.actions;
+export default deleteReservationSlice.reducer;
