@@ -2,17 +2,17 @@ import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
 
 const initialState = {
-  status: "idle",
-  deletedReservation:[],
+  status: 'idle',
+  deletedReservation: [],
   loading: false,
-}
+};
 
 const url = 'http://localhost:3000';
 
 // Delete data from the reservations table
 
 export const deleteReservation = createAsyncThunk(
-  'reservations/deleteReservation',
+  'reservationsDelete/deleteReservation',
   async ({ reservationId, userId }) => {
     try {
       await axios.delete(
@@ -32,10 +32,10 @@ export const deleteReservation = createAsyncThunk(
 // Delete reservation slice
 
 export const deleteReservationSlice = createSlice({
-  name: 'reservationsDelete',
+  name: 'reservationDelete',
   initialState,
   reducers: {
-    deleteReservation: (state) => {
+    restartDeleteReservation: (state) => {
       state.deletedReservation = [];
     },
   },
@@ -51,7 +51,7 @@ export const deleteReservationSlice = createSlice({
       })
       .addCase(deleteReservation.rejected, (state) => {
         state.loading = false;
-      })
+      });
   },
 });
 

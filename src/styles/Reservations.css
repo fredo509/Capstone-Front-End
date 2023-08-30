@@ -32,10 +32,6 @@
   align-items: center;
 }
 
-.grid button {
-  display: none;
-}
-
 .display-card-title {
   text-align: center;
   font-size: 2em;
