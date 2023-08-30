@@ -26,6 +26,7 @@
   justify-content: space-evenly;
   align-items: center;
 }
+
 .each-room-reserved {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
