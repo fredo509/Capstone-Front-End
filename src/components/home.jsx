@@ -36,6 +36,7 @@ const Home = () => {
       <Carousel responsive={responsive}>
         {rooms.map((room) => (
           <Card
+            id={room.id}
             key={room.id}
             name={room.name}
             description={room.description}

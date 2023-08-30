@@ -8,6 +8,7 @@ import Navbar from './components/navbar';
 import Home from './components/home';
 import DeleteRooms from './components/DeleteRooms';
 import AddReservation from './components/AddReservation';
+import Room from './components/Room';
 
 function App() {
   return (
@@ -16,6 +17,7 @@ function App() {
       <Provider store={store}>
         <Routes>
           <Route path="/" element={<Home />} />
+          <Route path="rooms/:id" element={<Room />} />
           <Route path="/reservations" element={<Reservations />} />
           <Route path="/addReservation" element={<AddReservation />} />
           <Route path="/deleteRooms" element={<DeleteRooms />} />

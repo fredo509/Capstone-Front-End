@@ -24,7 +24,7 @@ export const fetchRooms = createAsyncThunk('rooms/fetchRooms', async () => {
 // Fetch Rooms Details
 
 export const fetchRoomsDetails = createAsyncThunk('rooms/fetchRoomsDetails', async (id) => {
-  const response = await fetch(`${url}/rooms/room_${id}`);
+  const response = await fetch(`${url}/rooms/${id}`);
   if (response.ok) {
     const data = await response.json();
     return data;
@@ -90,6 +90,19 @@ export const roomsSlice = createSlice({
         rooms: action.payload,
       }))
       .addCase(fetchRooms.rejected, (state, action) => ({
+        ...state,
+        status: 'failed',
+        error: action.error.message,
+      }))
+      .addCase(fetchRoomsDetails.pending, (state) => {
+        state.status = 'loading';
+      })
+      .addCase(fetchRoomsDetails.fulfilled, (state, action) => ({
+        ...state,
+        status: 'success',
+        roomsInfo: action.payload,
+      }))
+      .addCase(fetchRoomsDetails.rejected, (state, action) => ({
         ...state,
         status: 'failed',
         error: action.error.message,
