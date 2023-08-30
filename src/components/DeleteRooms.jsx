@@ -1,19 +1,19 @@
-import React from 'react';
-import data from '../data/data.json';
+import React, { useEffect } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
+import { fetchRooms } from '../redux/roomsSlice';
+
 import Card from './Card';
 import '../styles/Reservations.css';
 
 const DeleteRooms = () => {
-  const cardRendering = data.map((el) => (
-    <Card
-      key={el.id}
-      name={el.name}
-      description={el.description}
-      price={el.price}
-      img={el.img}
-      className="card"
-    />
-  ));
+  const dispatch = useDispatch();
+  const { rooms, status } = useSelector((state) => state.rooms);
+
+  useEffect(() => {
+    if (status === 'idle' && rooms.length === 0) {
+      dispatch(fetchRooms());
+    }
+  }, [status, dispatch, rooms]);
 
   return (
     <>
@@ -22,7 +22,16 @@ const DeleteRooms = () => {
       </div>
       <div className="reservations-container flex">
         <div className="delete-grid">
-          {cardRendering}
+          {rooms.map((room) => (
+            <Card
+              id={room.id}
+              key={room.id}
+              name={room.name}
+              description={room.description}
+              cost={room.cost}
+              photo={room.photo}
+            />
+          ))}
         </div>
       </div>
     </>

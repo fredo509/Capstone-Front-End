@@ -1,18 +1,23 @@
 import React from 'react';
-import data from '../data/data.json';
+import { useSelector } from 'react-redux';
+// import data from '../data/data.json';
 import Card from './Card';
 import '../styles/Reservations.css';
 import '../styles/Home.scss';
 
 function Reservations() {
-  const roomsReserved = data.filter((el) => el.reserved === true);
+  // const dispatch = useDispatch();
+  const { rooms } = useSelector((state) => state.rooms);
+
+  const roomsReserved = rooms.filter((el) => el.reserved === true);
   const cardRendering = roomsReserved.map((el) => (
     <Card
+      id={el.id}
       key={el.id}
       name={el.name}
       description={el.description}
-      price={el.price}
-      img={el.img}
+      cost={el.cost}
+      photo={el.photo}
       className="card"
     />
   ));

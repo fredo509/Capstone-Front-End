@@ -1,4 +1,6 @@
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import { Provider } from 'react-redux';
+import store from './redux/store';
 import './App.css';
 import './styles/Navbar.scss';
 import Reservations from './components/Reservations';
@@ -11,12 +13,14 @@ function App() {
   return (
     <BrowserRouter>
       <Navbar />
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/reservations" element={<Reservations />} />
-        <Route path="/addReservation" element={<AddReservation />} />
-        <Route path="/deleteRooms" element={<DeleteRooms />} />
-      </Routes>
+      <Provider store={store}>
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/reservations" element={<Reservations />} />
+          <Route path="/addReservation" element={<AddReservation />} />
+          <Route path="/deleteRooms" element={<DeleteRooms />} />
+        </Routes>
+      </Provider>
     </BrowserRouter>
   );
 }

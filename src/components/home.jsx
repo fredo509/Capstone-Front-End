@@ -1,20 +1,22 @@
-import '../styles/Home.scss';
+import { useSelector, useDispatch } from 'react-redux';
+import { useEffect } from 'react';
 import Carousel from 'react-multi-carousel';
+import { fetchRooms } from '../redux/roomsSlice';
+
+import '../styles/Home.scss';
+import '../styles/Carousel.css';
 import 'react-multi-carousel/lib/styles.css';
-import data from '../data/data.json';
 import Card from './Card';
 
 const Home = () => {
-  const cardRendering = data.map((el) => (
-    <Card
-      key={el.id}
-      name={el.name}
-      description={el.description}
-      price={el.price}
-      img={el.img}
-      className="card"
-    />
-  ));
+  const dispatch = useDispatch();
+  const { rooms, status } = useSelector((state) => state.rooms);
+
+  useEffect(() => {
+    if (status === 'idle' && rooms.length === 0) {
+      dispatch(fetchRooms());
+    }
+  }, [status, dispatch, rooms]);
 
   const responsive = {
     superLargeDesktop: {
@@ -32,7 +34,15 @@ const Home = () => {
       <h1 className="home-title">All suites</h1>
       <p className="home-brief">Please click on any of the suites to get more information</p>
       <Carousel responsive={responsive}>
-        {cardRendering}
+        {rooms.map((room) => (
+          <Card
+            key={room.id}
+            name={room.name}
+            description={room.description}
+            cost={room.cost}
+            photo={room.photo}
+          />
+        ))}
       </Carousel>
     </section>
   );

@@ -35,8 +35,8 @@
 }
 
 .embla__slide__img {
-  height: 30%;
-  object-fit: cover;
+  width: 70%;
+  height: 70%;
 }
 
 .card-container {
@@ -47,12 +47,6 @@
   align-items: center;
 }
 
-@media screen and (max-width: 768px) {
-  .embla {
-    display: none;
-  }
-
-  .room-list {
-    display: initial;
-  }
+.card-img-container {
+  text-align: center;
 }
