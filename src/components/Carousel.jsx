@@ -21,8 +21,7 @@ const CarouselRooms = () => {
       items: 1,
     },
   };
-    <Carousel responsive={responsive}>
-    </Carousel>;
+    <Carousel responsive={responsive} />;
 };
 
 export default CarouselRooms;

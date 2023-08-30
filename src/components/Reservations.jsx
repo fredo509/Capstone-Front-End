@@ -20,7 +20,7 @@ function Reservations() {
     try {
       dispatch(deleteReservation({ reservationId, userId }));
     } catch (err) {
-      console.log(err);
+      console.error('Unable to delete', err);
     }
   };
 
