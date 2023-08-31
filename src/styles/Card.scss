@@ -12,7 +12,7 @@ $light-gray-color: #8f8f8f;
   justify-content: center;
   align-items: center;
 
-  .card-img-container{
+  .card-img-container {
     .card_img {
       width: 220px;
       height: auto;
@@ -29,12 +29,10 @@ $light-gray-color: #8f8f8f;
   }
 
   .card-separator {
-
     p {
       color: rgb(226, 226, 226);
       font-size: 2rem;
     }
-
   }
 
   .card-content {
@@ -95,5 +93,4 @@ $light-gray-color: #8f8f8f;
       height: 15px;
     }
   }
-
 }
