@@ -11,6 +11,7 @@ import Card from './Card';
 const Home = () => {
   const dispatch = useDispatch();
   const { rooms, status } = useSelector((state) => state.rooms);
+  console.log(rooms);
 
   useEffect(() => {
     if (status === 'idle' && rooms.length === 0) {

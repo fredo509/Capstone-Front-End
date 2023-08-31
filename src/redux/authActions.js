@@ -20,7 +20,7 @@ export const logoutSuccess = () => ({
 
 const url = 'http://localhost:4000/';
 
-export const login = (email, password) => async (dispatch) => {
+export const loginApi = (email, password) => async (dispatch) => {
   const requestBody = {
     user: {
       email,
@@ -60,7 +60,7 @@ export const signup = ({ name, email, password }) => async () => {
   }
 };
 
-export const logout = () => (dispatch) => {
+export const logoutApi = () => (dispatch) => {
   localStorage.removeItem('tokenKey');
   delete axios.defaults.headers.common.authorization;
   dispatch({ type: 'LOGOUT' });

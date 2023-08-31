@@ -1,10 +1,12 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router';
 import { useDispatch } from 'react-redux';
-import { login } from '../redux/authActions';
+import { loginApi } from '../redux/authActions';
+import { useAuth } from '../auth/AuthProvider';
 import '../styles/Forms.css';
 
 function LoginForm() {
+  const { login } = useAuth();
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const [email, setEmail] = useState('');
@@ -13,7 +15,8 @@ function LoginForm() {
   const handleLogin = (e) => {
     e.preventDefault();
 
-    dispatch(login(email, password));
+    dispatch(loginApi(email, password));
+    login();
     navigate('/');
   };
 

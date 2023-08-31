@@ -40,16 +40,19 @@ import { useSelector, useDispatch } from 'react-redux'; // Import useSelector an
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTwitter, faFacebookF, faInstagram } from '@fortawesome/free-brands-svg-icons';
 import logo from '../assets/hotelLogo.png';
-import { logout } from '../redux/authActions'; // Import the logout action
+import { logoutApi } from '../redux/authActions'; // Import the logout action
+import { useAuth } from '../auth/AuthProvider';
 
 const Navbar = () => {
   const token = useSelector((state) => state.authorization.token);
-  const dispatch = useDispatch(); // Get the dispatch function
-  const navigate = useNavigate(); // Get the navigate function from React Router
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+  const { logout } = useAuth();
 
   const handleLogout = () => {
-    dispatch(logout()); // Dispatch the logout action
-    navigate('/'); // Redirect to the home page after logout
+    dispatch(logoutApi());
+    logout();
+    navigate('/');
   };
 
   return (

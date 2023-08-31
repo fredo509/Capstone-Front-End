@@ -12,13 +12,33 @@ const initialState = {
 
 const url = 'http://localhost:4000';
 
-export const fetchRooms = createAsyncThunk('rooms/fetchRooms', async () => {
+/* export const fetchRooms = createAsyncThunk('rooms/fetchRooms', async () => {
   const response = await fetch(`${url}/rooms`);
   if (response.ok) {
     const data = await response.json();
     return data;
   }
   throw new Error('Something went wrong!');
+}); */
+
+export const fetchRooms = createAsyncThunk('rooms/fetchRooms', async () => {
+  const token = localStorage.getItem('tokenKey');
+
+  try {
+    const response = await axios.get(`${url}/rooms`, {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    });
+
+    if (response.status === 200) {
+      const data = await response.data;
+      return data;
+    }
+    return response.data;
+  } catch (error) {
+    throw new Error(error);
+  }
 });
 
 // Fetch Rooms Details
@@ -92,7 +112,7 @@ export const roomsSlice = createSlice({
       .addCase(fetchRooms.rejected, (state, action) => ({
         ...state,
         status: 'failed',
-        error: action.error.message,
+        error: action.payload,
       }))
       .addCase(fetchRoomsDetails.pending, (state) => {
         state.status = 'loading';

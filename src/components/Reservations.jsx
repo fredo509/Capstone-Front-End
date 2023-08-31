@@ -12,9 +12,11 @@ function Reservations() {
     (state) => state.deleteReservation,
   );
 
+  console.log(reservations);
+
   useEffect(() => {
     if (status === 'idle') {
-      dispatch(fetchReservations(2));
+      dispatch(fetchReservations(3));
     }
   }, [status, dispatch]);
 
@@ -25,6 +27,10 @@ function Reservations() {
       console.error('Unable to delete', err);
     }
   };
+
+  if (!reservations || reservations.length === 0) {
+    return <p>Loading...</p>;
+  }
 
   return (
     <>
