@@ -10,7 +10,7 @@ const initialState = {
 
 // Fetch Rooms
 
-const url = 'http://localhost:3000/';
+const url = 'http://localhost:4000';
 
 export const fetchRooms = createAsyncThunk('rooms/fetchRooms', async () => {
   const response = await fetch(`${url}/rooms`);

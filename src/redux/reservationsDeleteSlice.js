@@ -7,7 +7,7 @@ const initialState = {
   loading: false,
 };
 
-const url = 'http://localhost:3000';
+const url = 'http://localhost:4000';
 
 // Delete data from the reservations table
 

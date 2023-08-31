@@ -5,7 +5,7 @@ const initialState = {
   status: 'idle',
 };
 
-const url = 'http://localhost:3000';
+const url = 'http://localhost:4000';
 
 // Fetch data from reservations table
 
