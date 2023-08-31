@@ -2,7 +2,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate, useParams } from 'react-router-dom';
 import { useEffect } from 'react';
 import { fetchRoomsDetails } from '../redux/roomsSlice';
-import '../styles/Room.css';
+import '../styles/Room.scss';
 
 const Room = () => {
   const dispatch = useDispatch();
@@ -26,30 +26,20 @@ const Room = () => {
 
   return (
     <section className="room-content-container">
-      <h2 className="room-title">
-        Take a look at
-      </h2>
-      <h2 className="room-title">
-        {roomsInfo.name}
-      </h2>
-      <div>
-        <div>
-          <div className="room-img-container">
-            <img src={roomsInfo.photo} alt={roomsInfo.name} className="room-img" />
-          </div>
-          <div className="room-content aling-center">
-            <p>
-              Price:
-              {roomsInfo.cost}
-              $
-            </p>
-            <p>{roomsInfo.description}</p>
-            <div className="aling-center">
-              <button onClick={onNavigateBack} type="button">Back</button>
-              {/* <button onClick={onHandleReserve}>Reserve</button> */}
-            </div>
-          </div>
-        </div>
+      <div className="room-img-container">
+        <img src={roomsInfo.photo} alt={roomsInfo.name} className="room-img" />
+      </div>
+      <div className="room-details">
+        <h2 className="room-title">
+          {roomsInfo.name}
+        </h2>
+        <p>{roomsInfo.description}</p>
+        <p>
+          Price:
+          {roomsInfo.cost}
+          $
+        </p>
+        <button onClick={onNavigateBack} type="button">Back</button>
       </div>
     </section>
   );

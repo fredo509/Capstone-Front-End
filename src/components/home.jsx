@@ -4,7 +4,6 @@ import Carousel from 'react-multi-carousel';
 import { fetchRooms } from '../redux/roomsSlice';
 
 import '../styles/Home.scss';
-import '../styles/Carousel.css';
 import 'react-multi-carousel/lib/styles.css';
 import Card from './Card';
 

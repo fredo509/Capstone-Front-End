@@ -6,26 +6,26 @@
 
 .room-content-container {
   display: flex;
-  flex-direction: column;
   justify-content: center;
   align-items: center;
+  height: 90vh;
   font-family: 'Montserrat', sans-serif;
-}
 
-.room-title {
-  font-size: 4rem;
-  font-weight: 900;
-  text-transform: uppercase;
-  color: #474747;
-  letter-spacing: 0.5rem;
-}
+  .room-title {
+    font-size: 4rem;
+    font-weight: 900;
+    text-transform: uppercase;
+    color: #474747;
+    letter-spacing: 0.5rem;
+  }
 
-.room-img-container {
-  text-align: center;
-  margin-left: 3%;
-}
+  .room-img-container {
+    text-align: center;
+    margin-left: 3%;
+  }
 
-.room-img {
-  width: 40%;
-  height: 40%;
+  .room-img {
+    width: 40%;
+    height: 40%;
+  }
 }
