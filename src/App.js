@@ -46,14 +46,15 @@ import { Provider } from 'react-redux';
 import store from './redux/store';
 import './App.css';
 import './styles/Navbar.scss';
-// import Reservations from './components/Reservations';
+import Reservations from './components/Reservations';
 import Navbar from './components/navbar';
 import Home from './components/home';
-// import DeleteRooms from './components/DeleteRooms';
+import DeleteRooms from './components/DeleteRooms';
 import AddReservation from './components/AddReservation';
-// import Room from './components/Room';
+import Room from './components/Room';
 import LoginForm from './components/LoginForm';
 import PrivateRoute from './components/PrivateRoute';
+import SignupForm from './components/SignupForm';
 
 function App() {
   useEffect(() => {
@@ -68,8 +69,26 @@ function App() {
         <Navbar />
         <Routes>
           <Route path="/" element={<Home />} />
-          {/* <PrivateRoute path="rooms/:id" element={<Room />} /> */}
-          {/* <PrivateRoute path="/reservations" element={<Reservations />} /> */}
+          <Route
+            path="rooms/:id"
+            element={
+              (
+                <PrivateRoute>
+                  <Room />
+                </PrivateRoute>
+              )
+            }
+          />
+          <Route
+            path="/reservations"
+            element={
+              (
+                <PrivateRoute>
+                  <Reservations />
+                </PrivateRoute>
+              )
+            }
+          />
           <Route
             path="/addReservation"
             element={
@@ -80,8 +99,18 @@ function App() {
               )
             }
           />
-          {/* <PrivateRoute path="/deleteRooms" element={<DeleteRooms />} /> */}
+          <Route
+            path="/deleteRooms"
+            element={
+              (
+                <PrivateRoute>
+                  <DeleteRooms />
+                </PrivateRoute>
+              )
+            }
+          />
           <Route path="/loginForm" element={<LoginForm />} />
+          <Route path="/signupForm" element={<SignupForm />} />
         </Routes>
       </Provider>
     </BrowserRouter>

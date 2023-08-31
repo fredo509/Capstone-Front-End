@@ -10,9 +10,8 @@ export const loginSuccess = (token) => ({
   payload: { token },
 });
 
-export const signupSuccess = (token) => ({
+export const signupSuccess = () => ({
   type: 'SIGNUP_SUCCESS',
-  payload: { token },
 });
 
 export const logoutSuccess = () => ({
@@ -45,26 +44,26 @@ export const login = (email, password) => async (dispatch) => {
   }
 };
 
-/* export const signup = ({ name, email, password }) => async (dispatch) => {
+export const signup = ({ name, email, password }) => async () => {
+  const requestBody = {
+    user: {
+      name,
+      email,
+      password,
+    },
+  };
   try {
-    const response = await axios.post(`${url}/login`, { name, email, password });
-    const authorizationHeader = response.headers.authorization;
-    if (authorizationHeader) {
-      const token = authorizationHeader.split(' ')[1]; // Extract the token from the "Bearer" prefix
-      dispatch(signupSuccess(token));
-    }
+    const response = await axios.post(`${url}sign_up`, requestBody);
+    return response;
   } catch (error) {
-    // Dispatch error action
+    throw new Error(error);
   }
-}; */
+};
 
 export const logout = () => (dispatch) => {
-  // Clear token from localStorage
   localStorage.removeItem('tokenKey');
-  // You might also want to remove the authorization header
   delete axios.defaults.headers.common.authorization;
-  // Dispatch logout action if needed
-  dispatch({ type: 'LOGOUT' }); // You can define a LOGOUT action type if you want
+  dispatch({ type: 'LOGOUT' });
 };
 
 const authReducer = (state = initialState, action) => {
