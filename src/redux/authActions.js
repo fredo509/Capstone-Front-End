@@ -64,6 +64,26 @@ export const logoutApi = () => (dispatch) => {
   dispatch({ type: 'LOGOUT' });
 };
 
+export const fetchCurrentUser = () => async (dispatch, getState) => {
+  const { token } = getState().authorization;
+  try {
+    const response = await axios.get(`${url}current_user`, {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    });
+    if (response.status === 200) {
+      const userData = response.data;
+      localStorage.setItem('userId', userData.id);
+      localStorage.setItem('userRole', userData.role);
+    } else {
+      console.error('Error al obtener el usuario actual');
+    }
+  } catch (error) {
+    throw new Error(error);
+  }
+};
+
 const authReducer = (state = initialState, action) => {
   switch (action.type) {
     case 'LOGIN_SUCCESS':

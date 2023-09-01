@@ -14,9 +14,14 @@ const url = 'http://localhost:4000';
 export const deleteReservation = createAsyncThunk(
   'reservationsDelete/deleteReservation',
   async ({ reservationId, userId }) => {
+    const token = localStorage.getItem('tokenKey');
     try {
       await axios.delete(
-        `${url}/users/${userId}/reservations/${reservationId}`,
+        `${url}/users/${userId}/reservations/${reservationId}`, {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        },
       );
       return {
         reservationId,

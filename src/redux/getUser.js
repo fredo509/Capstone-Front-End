@@ -23,11 +23,11 @@ export const fetchUsers = createAsyncThunk('users/fetchUsers', async () => {
 
     if (response.status === 200) {
       const data = await response.data;
-      console.log(data.id);
       localStorage.setItem('userId', JSON.stringify(data.id));
       return data;
     }
-    return response.data;
+
+    return response.data.id;
   } catch (error) {
     throw new Error(error);
   }

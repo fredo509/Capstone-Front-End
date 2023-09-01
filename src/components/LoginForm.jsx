@@ -1,9 +1,8 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router';
 import { useDispatch } from 'react-redux';
-import { loginApi } from '../redux/authActions';
+import { loginApi, fetchCurrentUser } from '../redux/authActions';
 import { useAuth } from '../auth/AuthProvider';
-import { fetchUsers } from '../redux/getUser';
 import '../styles/Forms.css';
 
 function LoginForm() {
@@ -13,12 +12,16 @@ function LoginForm() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
-  const handleLogin = (e) => {
+  const handleLogin = async (e) => {
     e.preventDefault();
-    dispatch(loginApi(email, password));
-    dispatch(fetchUsers());
-    login();
-    navigate('/');
+    try {
+      await dispatch(loginApi(email, password));
+      await dispatch(fetchCurrentUser());
+      login();
+      navigate('/');
+    } catch (error) {
+      console.error(error);
+    }
   };
 
   return (
