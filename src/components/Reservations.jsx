@@ -12,8 +12,6 @@ function Reservations() {
     (state) => state.deleteReservation,
   );
 
-  console.log(reservations);
-
   useEffect(() => {
     if (status === 'idle') {
       dispatch(fetchReservations(3));

@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router';
 import { useDispatch } from 'react-redux';
 import { loginApi } from '../redux/authActions';
 import { useAuth } from '../auth/AuthProvider';
+import { fetchUsers } from '../redux/getUser';
 import '../styles/Forms.css';
 
 function LoginForm() {
@@ -14,8 +15,8 @@ function LoginForm() {
 
   const handleLogin = (e) => {
     e.preventDefault();
-
     dispatch(loginApi(email, password));
+    dispatch(fetchUsers());
     login();
     navigate('/');
   };

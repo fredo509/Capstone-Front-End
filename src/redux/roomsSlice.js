@@ -12,15 +12,6 @@ const initialState = {
 
 const url = 'http://localhost:4000';
 
-/* export const fetchRooms = createAsyncThunk('rooms/fetchRooms', async () => {
-  const response = await fetch(`${url}/rooms`);
-  if (response.ok) {
-    const data = await response.json();
-    return data;
-  }
-  throw new Error('Something went wrong!');
-}); */
-
 export const fetchRooms = createAsyncThunk('rooms/fetchRooms', async () => {
   const token = localStorage.getItem('tokenKey');
 
@@ -44,7 +35,12 @@ export const fetchRooms = createAsyncThunk('rooms/fetchRooms', async () => {
 // Fetch Rooms Details
 
 export const fetchRoomsDetails = createAsyncThunk('rooms/fetchRoomsDetails', async (id) => {
-  const response = await fetch(`${url}/rooms/${id}`);
+  const token = localStorage.getItem('tokenKey');
+  const response = await fetch(`${url}/rooms/${id}`, {
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+  });
   if (response.ok) {
     const data = await response.json();
     return data;
@@ -71,7 +67,13 @@ export const createRoom = createAsyncThunk('rooms/createRoom', async ({
 // Delete Room
 
 export const deleteRoom = createAsyncThunk('rooms/deleteRoom', async (id) => {
-  const response = await axios.delete(`${url}/rooms/${id}`);
+  const token = localStorage.getItem('tokenKey');
+
+  const response = await axios.delete(`${url}/rooms/${id}`, {
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+  });
   if (response.status) {
     return id;
   }

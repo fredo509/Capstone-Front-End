@@ -28,12 +28,9 @@ export const loginApi = (email, password) => async (dispatch) => {
     },
   };
 
-  console.log(requestBody);
-
   try {
     const response = await axios.post(`${url}login`, requestBody);
     const authorizationHeader = response.headers.authorization;
-    console.log(authorizationHeader);
     if (authorizationHeader) {
       const token = authorizationHeader.split(' ')[1];
       dispatch(loginSuccess(token));
@@ -62,6 +59,7 @@ export const signup = ({ name, email, password }) => async () => {
 
 export const logoutApi = () => (dispatch) => {
   localStorage.removeItem('tokenKey');
+  localStorage.removeItem('userId');
   delete axios.defaults.headers.common.authorization;
   dispatch({ type: 'LOGOUT' });
 };

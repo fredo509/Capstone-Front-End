@@ -21,7 +21,6 @@ export const fetchReservations = createAsyncThunk(
           Authorization: `Bearer ${token}`,
         },
       });
-      console.log(response);
 
       if (response.status === 200) {
         const data = await response.data;

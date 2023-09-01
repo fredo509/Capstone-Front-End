@@ -11,7 +11,6 @@ import Card from './Card';
 const Home = () => {
   const dispatch = useDispatch();
   const { rooms, status } = useSelector((state) => state.rooms);
-  console.log(rooms);
 
   useEffect(() => {
     if (status === 'idle' && rooms.length === 0) {
@@ -21,7 +20,6 @@ const Home = () => {
 
   const responsive = {
     superLargeDesktop: {
-    // the naming can be any, depends on you.
       breakpoint: { max: 4000, min: 3000 },
       items: 5,
     },
@@ -30,6 +28,7 @@ const Home = () => {
       items: 3,
     },
   };
+
   return (
     <section className="home-container">
       <h1 className="home-title">All suites</h1>
