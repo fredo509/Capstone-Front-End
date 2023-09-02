@@ -1,23 +1,35 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
+import axios from 'axios';
 
 const initialState = {
   reservations: [],
   status: 'idle',
 };
 
-const url = 'http://localhost:3000';
+const url = 'http://localhost:4000';
 
 // Fetch data from reservations table
 
 export const fetchReservations = createAsyncThunk(
   'reservations/fetchReservations',
   async (userId) => {
-    const response = await fetch(`${url}/users/${userId}/reservations`);
-    if (response.ok) {
-      const data = await response.json();
-      return data;
+    const token = localStorage.getItem('tokenKey');
+
+    try {
+      const response = await axios.get(`${url}/users/${userId}/reservations`, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      });
+
+      if (response.status === 200) {
+        const data = await response.data;
+        return data;
+      }
+      return response.data;
+    } catch (error) {
+      throw new Error(error);
     }
-    throw new Error('Something went wrong');
   },
 );
 

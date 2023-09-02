@@ -11,20 +11,25 @@ function Reservations() {
   const { deletedReservation } = useSelector(
     (state) => state.deleteReservation,
   );
+  const userId = localStorage.getItem('userId');
 
   useEffect(() => {
-    if (status === 'idle') {
-      dispatch(fetchReservations(2));
+    if (status === 'idle' && userId) {
+      dispatch(fetchReservations(userId));
     }
-  }, [status, dispatch]);
+  }, [status, dispatch, userId]);
 
   const onHanlde = (reservationId, userId) => {
     try {
       dispatch(deleteReservation({ reservationId, userId }));
     } catch (err) {
-      console.error('Unable to delete', err);
+      throw new Error(err);
     }
   };
+
+  if (!reservations || reservations.length === 0) {
+    return <p className="title">No reservations made</p>;
+  }
 
   return (
     <>
@@ -35,11 +40,12 @@ function Reservations() {
         const reservationId = reservation.id;
         const userId = reservation.user_id;
 
-        const deleted = deletedReservation.some(
-          (el) => el.id === reservationId,
-        );
-        if (deleted) {
-          return null;
+        if (deletedReservation.length > 0) {
+          return (
+            <>
+              <p className="title">No reservations made</p>
+            </>
+          );
         }
 
         return (
