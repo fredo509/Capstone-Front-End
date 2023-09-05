@@ -25,16 +25,26 @@ const Card = ({
   };
 
   const addRoomIdAndCost = (roomId, roomCost) => (dispatch, getState) => {
-    // Dispatch an action to add the room ID to the array
-    dispatch(addRoomId(roomId));
-
-    // Calculate the new total cost
     const state = getState();
-    const { totalCost } = state.pendingReservation.reservation;
-    const newTotalCost = totalCost + parseFloat(roomCost);
+    const { roomIds, totalCost } = state.pendingReservation.reservation;
 
-    // Dispatch an action to update the total cost
-    dispatch(updateTotal(newTotalCost));
+    // Check if roomId is already in room_ids
+    if (roomIds.includes(roomId)) {
+      // Room is already selected, subtract its cost
+      const newTotalCost = totalCost - parseFloat(roomCost);
+
+      dispatch(addRoomId(roomId));
+      dispatch(updateTotal(newTotalCost));
+    } else {
+      // Room is not selected, add its cost
+      console.log('room id does not exist');
+      const newTotalCost = totalCost + parseFloat(roomCost);
+
+      dispatch(addRoomId(roomId));
+      dispatch(updateTotal(newTotalCost));
+    }
+
+    console.log(roomIds);
   };
 
   return (
@@ -67,7 +77,7 @@ const Card = ({
             type="button"
             className="reserve-btn"
           >
-            {reservationState === 'reserved' ? 'Reserved' : 'Reserve'}
+            {reservationState === 'reserve' ? 'Reserved' : 'Reserve'}
           </button>
           )}
           { showDeleteButton && (

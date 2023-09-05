@@ -6,7 +6,7 @@ const initialState = {
     city: 'New York',
     totalCost: 0,
     user_id: 0,
-    room_ids: [],
+    roomIds: [],
   },
 };
 
@@ -20,7 +20,7 @@ const addReservationSlice = createSlice({
         city: 'New York',
         totalCost: 0,
         user_id: 0,
-        room_ids: [],
+        roomIds: [],
       };
     },
     setReservationDate: (state, action) => {
@@ -37,17 +37,13 @@ const addReservationSlice = createSlice({
     },
     addRoomId: (state, action) => {
       const roomId = action.payload;
-      const roomIds = state.reservation.room_ids;
+      const { roomIds } = state.reservation;
 
-      // Check if the ID is already in the array
-      const index = roomIds.indexOf(roomId);
-
-      if (index === -1) {
-        // ID is not in the array, so add it
-        state.reservation.room_ids.push(roomId);
+      // If roomIds already contains the roomId, remove it
+      if (roomIds.includes(roomId)) {
+        state.reservation.roomIds = roomIds.filter((id) => id !== roomId);
       } else {
-        // ID is already in the array, so remove it
-        state.reservation.room_ids.splice(index, 1);
+        state.reservation.roomIds.push(roomId);
       }
     },
   },

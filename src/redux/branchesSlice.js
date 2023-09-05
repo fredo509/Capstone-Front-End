@@ -12,7 +12,6 @@ const url = 'http://localhost:4000';
 
 export const fetchBranches = createAsyncThunk('branches/fetchBranches', async () => {
   const token = localStorage.getItem('tokenKey');
-  console.log('token', token);
   try {
     const response = await axios.get(`${url}/branches`, {
       headers: {
@@ -22,7 +21,6 @@ export const fetchBranches = createAsyncThunk('branches/fetchBranches', async ()
 
     if (response.status === 200) {
       const data = await response.data;
-      console.log('Fetched branches data:', data); // Add this line to log the fetched data
       return data;
     }
     return response.data;
