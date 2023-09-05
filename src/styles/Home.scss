@@ -78,3 +78,69 @@ $light-gray-color: #8f8f8f;
     z-index: 1;
   }
 }
+
+
+// Media query for screens with a width of 425px or smaller
+@media screen and (max-width: 425px) {
+  .home-container {
+    margin-left: 20%;
+    padding: 0 10px;
+
+    .home-title {
+      font-size: 3rem;
+      letter-spacing: 0.3rem;
+    }
+
+    .home-brief {
+      font-size: 1.2rem;
+      width: 70%;
+    }
+
+    .react-multi-carousel-item {
+      .display-card-container {
+        margin: 0 10px;
+
+        p {
+          font-weight: 700;
+        }
+      }
+    }
+
+    .react-multiple-carousel__arrow {
+      width: 50px;
+      padding: 10px;
+    }
+  }
+}
+
+// Media query for screens with a width of 768px or smaller
+@media screen and (max-width: 768px) {
+  .home-container {
+    margin-left: 20%;
+    padding: 0 10px;
+
+    .home-title {
+      font-size: 3rem;
+      letter-spacing: 0.3rem;
+    }
+
+    .home-brief {
+      font-size: 1.2rem;
+    }
+
+    .react-multi-carousel-item {
+      .display-card-container {
+        margin: 0 10px;
+
+        p {
+          font-weight: 700;
+        }
+      }
+    }
+
+    .react-multiple-carousel__arrow {
+      width: 50px;
+      padding: 10px;
+    }
+  }
+}

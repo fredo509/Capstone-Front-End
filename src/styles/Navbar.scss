@@ -55,6 +55,10 @@ $gray-color: #474747;
         background-color: $green-color;
         color: #fff;
       }
+      
+      button {
+        margin-left: 20%;
+      }
     }
   }
 
@@ -72,7 +76,18 @@ $gray-color: #474747;
 @media screen and (max-width: 425px) {
   .navbar {
     min-width: auto;
+    width: 23vw;
     padding: 3vh 0;
+    overflow: hidden;
+    left: 0;
+    transition: width 0.4s ease-in-out;
+    font-size: 1.5em;
+
+    &:hover {
+      width: 40vw;
+      align-items: center;
+      transition: width 0.3s ease-in-out;
+    }
 
     .navLogo {
       width: 80px;
@@ -91,16 +106,28 @@ $gray-color: #474747;
     }
 
     .navIcons {
-      margin-top: 10vh;
+      margin-top: 2vh;
+      display: flex;
     }
   }
 }
 
 // Media query for screens with a width of 768px or smaller
-@media screen and (max-width: 768px) {
+@media screen and (min-width: 500px) and (max-width: 768px) {
   .navbar {
-    min-width: 20vw;
+    width: 15vw;
+    min-width: auto;
+    overflow: hidden;
     padding: 3vh 0;
+    left: 0;
+    align-items: baseline;
+    transition: width 0.4s ease-in-out;
+
+    &:hover {
+      width: 30vw;
+      align-items: center;
+      transition: width 0.3s ease-in-out;
+    }
 
     .navLogo {
       width: 80px;
@@ -111,15 +138,19 @@ $gray-color: #474747;
 
       .navItem {
         width: 100%;
-        
         a {
           padding: 10px;
+        }
+        
+        button {
+          margin-left: 20%;
         }
       }
     }
 
     .navIcons {
-      margin-top: 10vh;
+      margin-top: 2vh;
+      display: flex;
     }
   }
 }
