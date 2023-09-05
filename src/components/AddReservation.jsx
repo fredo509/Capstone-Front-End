@@ -4,6 +4,7 @@ import { fetchBranches } from '../redux/branchesSlice';
 import { fetchRooms } from '../redux/branchRoomSlice';
 import { saveReservation } from '../redux/saveReservationSlice';
 import { clearReservation } from '../redux/addReservationSlice';
+import { fetchReservations } from '../redux/reservationsSlice';
 import '../styles/Home.scss';
 import Card from './Card';
 import '../styles/Reservations.css';
@@ -29,6 +30,7 @@ const AddReservation = () => {
   const handleSaveReservation = () => {
     dispatch(saveReservation(pendingReservation));
     dispatch(clearReservation());
+    dispatch(fetchReservations(localStorage.getItem('userId')));
   };
 
   return (

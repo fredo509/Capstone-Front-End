@@ -7,17 +7,15 @@ import '../styles/Home.scss';
 
 function Reservations() {
   const dispatch = useDispatch();
-  const { status, reservations } = useSelector((state) => state.reservations);
+  const { reservations } = useSelector((state) => state.reservations);
   const { deletedReservation } = useSelector(
     (state) => state.deleteReservation,
   );
   const userId = localStorage.getItem('userId');
 
   useEffect(() => {
-    if (status === 'idle' && userId) {
-      dispatch(fetchReservations(userId));
-    }
-  }, [status, dispatch, userId]);
+    dispatch(fetchReservations(userId));
+  }, [dispatch, userId]);
 
   const onHanlde = (reservationId, userId) => {
     try {
