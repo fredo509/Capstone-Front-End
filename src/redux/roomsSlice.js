@@ -48,28 +48,6 @@ export const fetchRoomsDetails = createAsyncThunk('rooms/fetchRoomsDetails', asy
   throw new Error('Something went wrong!');
 });
 
-// Get Branches Details
-export const fetchBranches = createAsyncThunk('branches/fetchBranches', async () => {
-  const token = localStorage.getItem('tokenKey');
-  try {
-    const response = await axios.get(`${url}/branches`, {
-      headers: {
-        Authorization: `Bearer ${token}`,
-      },
-    });
-
-    if (response.status === 200) {
-      const data = await response.data;
-      console.log('Fetched branches data:', data); // Add this line to log the fetched data
-      return data;
-    }
-    return response.data;
-  } catch (error) {
-    console.error('Error fetching branches:', error); // Add this line to log any errors
-    throw new Error(error);
-  }
-});
-
 // POST room
 export const createRoom = createAsyncThunk('rooms/createRoom', async ({
   userId, name, photo, cost, description,
@@ -150,26 +128,6 @@ export const roomsSlice = createSlice({
         status: 'failed',
         error: action.error.message,
       }));
-  },
-});
-
-export const branchesSlice = createSlice({
-  name: 'branches',
-  initialState: [], // Initialize 'branches' as an empty array
-  reducers: {},
-  extraReducers: (build) => {
-    build
-      .addCase(fetchBranches.pending, (state) => {
-        state.status = 'loading';
-      })
-      .addCase(fetchBranches.fulfilled, (state, action) => {
-        state.status = 'success';
-        state.data = action.payload; // Update 'data' with fetched branches
-      })
-      .addCase(fetchBranches.rejected, (state, action) => {
-        state.status = 'failed';
-        state.error = action.error.message;
-      });
   },
 });
 

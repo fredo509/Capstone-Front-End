@@ -1,31 +1,58 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { fetchBranches } from '../redux/roomsSlice'; // Import the fetchBranches action
-
+import { fetchBranches } from '../redux/branchesSlice';
+import { fetchRooms } from '../redux/branchRoomSlice'; // Updated import
 import '../styles/Home.scss';
+import Card from './Card';
+import '../styles/Reservations.css';
 
 const AddReservation = () => {
-  console.log('Rendering');
   const dispatch = useDispatch();
 
   useEffect(() => {
     dispatch(fetchBranches());
   }, [dispatch]);
 
-  const branches = useSelector((state) => state.branches);
+  const branches = useSelector((state) => state.branches.data);
+  const selectedBranchId = useSelector((state) => state.branchRoom.selectedBranchId);
+  const rooms = useSelector((state) => state.branchRoom.data); // Updated selector
 
-  console.log('branches:', branches);
+  const handleBranchChange = (event) => {
+    const selectedBranchId = event.target.value;
+    dispatch(fetchRooms(selectedBranchId));
+  };
 
   return (
     <>
       <section className="home-container">
         <h1 className="home-title">Reserve your Suite</h1>
         <p className="home-brief">Please select where you want to stay</p>
-        <ul>
+        <select value={selectedBranchId} onChange={handleBranchChange}>
+          <option value="">Select a Branch</option>
           {branches.map((branch) => (
-            <li key={branch.id}>{branch.name}</li>
+            <option key={branch.id} value={branch.id}>
+              {branch.city}
+            </option>
           ))}
-        </ul>
+        </select>
+        {selectedBranchId && (
+          <div>
+            <h2>
+              Our Rooms
+            </h2>
+            {rooms.map((room) => (
+              <Card
+                id={room.id}
+                key={room.id}
+                name={room.name}
+                description={room.description}
+                cost={room.cost}
+                photo={room.photo}
+                showAddToReservationButton
+              />
+            ))}
+          </div>
+        )}
       </section>
     </>
   );

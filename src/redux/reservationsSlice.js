@@ -33,6 +33,31 @@ export const fetchReservations = createAsyncThunk(
   },
 );
 
+export const createReservation = createAsyncThunk(
+  'reservations/createReservation',
+  async ({ userId, reservationData }) => {
+    const token = localStorage.getItem('tokenKey');
+
+    try {
+      const response = await axios.post(`${url}/users/${userId}/reservations`, {
+        reservation: reservationData,
+      }, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      });
+
+      if (response.status === 200) {
+        const data = await response.data;
+        return data;
+      }
+      return response.data;
+    } catch (error) {
+      throw new Error(error);
+    }
+  },
+);
+
 // Reservation slice
 
 export const reservationsSlice = createSlice({
@@ -48,6 +73,13 @@ export const reservationsSlice = createSlice({
         state.reservations = action.payload;
       })
       .addCase(fetchReservations.rejected, (state) => {
+        state.status = 'failed';
+      })
+      // Add new reducers for createReservation action
+      .addCase(createReservation.pending, (state) => {
+        state.status = 'loading';
+      })
+      .addCase(createReservation.rejected, (state) => {
         state.status = 'failed';
       });
   },

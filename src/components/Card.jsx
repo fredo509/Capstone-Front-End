@@ -7,7 +7,8 @@ import { deleteRoom, deleteRoomReducer, selectedRoom } from '../redux/roomsSlice
 import '../styles/Card.scss';
 
 const Card = ({
-  id, name, photo, description, cost,
+  id, name, photo, description, cost, showDeleteButton = false,
+  showAddToReservationButton = false,
 }) => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -39,10 +40,16 @@ const Card = ({
             {cost}
             /night
           </p>
-          {/* Onclick will handle delete function */}
+          {showDeleteButton && (
+            <button onClick={() => handleDelete(id)} type="button" className="delete-btn">
+              Delete
+            </button>
+          )}
+          {showAddToReservationButton && (
           <button onClick={() => handleDelete(id)} type="button" className="delete-btn">
-            Delete
+            Reserve
           </button>
+          )}
           <button onClick={() => onHandleSelect(id)} type="button" className="select-btn">
             See Details
           </button>
@@ -63,6 +70,13 @@ Card.propTypes = {
   description: PropTypes.string.isRequired,
   cost: PropTypes.string.isRequired,
   id: PropTypes.number.isRequired,
+  showDeleteButton: PropTypes.bool,
+  showAddToReservationButton: PropTypes.bool,
+};
+
+Card.defaultProps = {
+  showDeleteButton: false,
+  showAddToReservationButton: false,
 };
 
 export default Card;
