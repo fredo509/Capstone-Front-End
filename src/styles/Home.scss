@@ -42,6 +42,10 @@ $light-gray-color: #8f8f8f;
     align-items: center;
     display: flex;
     justify-content: center;
+
+    .display-card-container {
+      margin: 0 35px;
+    }
   }
 
   .react-multi-carousel-item .delete-btn {

@@ -1,24 +1,18 @@
-import React, { useState } from 'react';
 import { PropTypes } from 'prop-types';
 import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTwitter, faFacebookF, faInstagram } from '@fortawesome/free-brands-svg-icons';
+import { addRoomId, updateTotal } from '../redux/addReservationSlice';
 import { deleteRoom, deleteRoomReducer, selectedRoom } from '../redux/roomsSlice';
 import '../styles/Card.scss';
 
 const Card = ({
   id, name, photo, description, cost, showDeleteButton, showAddToReservationButton,
 }) => {
-  const [reservationState, setReservationState] = useState({
-    reserved: false,
-    roomIds: [],
-    totalCost: 0,
-    city: '',
-  });
-
   const dispatch = useDispatch();
   const navigate = useNavigate();
+  const reservationState = 'reserve';
 
   const onHandleSelect = (id) => {
     dispatch(selectedRoom(id));
@@ -30,27 +24,17 @@ const Card = ({
     dispatch(deleteRoomReducer(id));
   };
 
-  const handleReserve = (roomId, roomCost, city) => {
-    if (reservationState.roomIds.includes(roomId)) {
-      const updatedRoomIds = reservationState.roomIds.filter((id) => id !== roomId);
-      setReservationState((prevState) => ({
-        ...prevState,
-        roomIds: updatedRoomIds,
-        totalCost: prevState.totalCost - parseFloat(roomCost),
-      }));
-    } else {
-      setReservationState((prevState) => ({
-        ...prevState,
-        roomIds: [...prevState.roomIds, roomId],
-        totalCost: prevState.totalCost + parseFloat(roomCost),
-        city,
-      }));
-    }
-    setReservationState((prevState) => ({
-      ...prevState,
-      reserved: !prevState.reserved,
-    }));
-    console.log('Reservation State:', reservationState);
+  const addRoomIdAndCost = (roomId, roomCost) => (dispatch, getState) => {
+    // Dispatch an action to add the room ID to the array
+    dispatch(addRoomId(roomId));
+
+    // Calculate the new total cost
+    const state = getState();
+    const { totalCost } = state.pendingReservation.reservation;
+    const newTotalCost = totalCost + parseFloat(roomCost);
+
+    // Dispatch an action to update the total cost
+    dispatch(updateTotal(newTotalCost));
   };
 
   return (
@@ -70,15 +54,6 @@ const Card = ({
             {cost}
             /night
           </p>
-          { showDeleteButton && (
-          <button
-            onClick={() => handleDelete(id)}
-            type="button"
-            className={`delete-btn ${showDeleteButton ? '' : 'hidden'}`}
-          >
-            Delete
-          </button>
-          )}
           <button
             onClick={() => onHandleSelect(id)}
             type="button"
@@ -88,11 +63,20 @@ const Card = ({
           </button>
           { showAddToReservationButton && (
           <button
-            onClick={() => handleReserve(id, cost, 'New York')} // Replace 'New York' with the actual city
+            onClick={() => dispatch(addRoomIdAndCost(id, cost))}
             type="button"
-            className={`reserve-btn ${reservationState.reserved ? 'reserved' : ''}`}
+            className="reserve-btn"
           >
-            {reservationState.reserved ? 'Reserved' : 'Reserve'}
+            {reservationState === 'reserved' ? 'Reserved' : 'Reserve'}
+          </button>
+          )}
+          { showDeleteButton && (
+          <button
+            onClick={() => dispatch(handleDelete(id))}
+            type="button"
+            className={`delete-btn ${showDeleteButton ? '' : 'hidden'}`}
+          >
+            Delete
           </button>
           )}
         </div>

@@ -16,6 +16,7 @@ const AddReservation = () => {
   const branches = useSelector((state) => state.branches.data);
   const selectedBranchId = useSelector((state) => state.branchRoom.selectedBranchId);
   const rooms = useSelector((state) => state.branchRoom.data); // Updated selector
+  const pendingReservation = useSelector((state) => state.pendingReservation.reservation);
 
   const handleBranchChange = (event) => {
     const selectedBranchId = event.target.value;
@@ -40,19 +41,27 @@ const AddReservation = () => {
             <h2>
               Our Rooms
             </h2>
-            {rooms.map((room) => (
-              <Card
-                id={room.id}
-                key={room.id}
-                name={room.name}
-                description={room.description}
-                cost={room.cost}
-                photo={room.photo}
-                showAddToReservationButton
-              />
-            ))}
+            <div className="react-multi-carousel-item ma-25px">
+              {rooms.map((room) => (
+                <Card
+                  id={room.id}
+                  key={room.id}
+                  name={room.name}
+                  description={room.description}
+                  cost={room.cost}
+                  photo={room.photo}
+                  showAddToReservationButton
+                />
+              ))}
+            </div>
           </div>
         )}
+        <div className="reservation-data-container">
+          <p>
+            Total:
+            {pendingReservation.totalCost}
+          </p>
+        </div>
       </section>
     </>
   );
