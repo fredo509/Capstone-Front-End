@@ -1,3 +1,4 @@
+import React, { useState } from 'react';
 import { PropTypes } from 'prop-types';
 import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
@@ -23,6 +24,8 @@ const Card = ({
     dispatch(deleteRoomReducer(id));
   };
 
+  const [isAdded, setIsAdded] = useState(false);
+
   /* eslint-disable camelcase */
   const addRoomIdAndCost = (roomId, roomCost) => (dispatch, getState) => {
     const state = getState();
@@ -35,6 +38,7 @@ const Card = ({
 
       dispatch(addRoomId(roomId));
       dispatch(updateTotal(newTotalCost));
+      setIsAdded(false);
     } else {
       // Room is not selected, add its cost
       console.log('room id does not exist');
@@ -42,6 +46,7 @@ const Card = ({
 
       dispatch(addRoomId(roomId));
       dispatch(updateTotal(newTotalCost));
+      setIsAdded(true);
     }
 
     console.log(room_ids);
@@ -79,7 +84,7 @@ const Card = ({
             type="button"
             className="select-btn"
           >
-            Add
+            {isAdded ? 'Remove' : 'Add'}
           </button>
           )}
           { showDeleteButton && (

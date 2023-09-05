@@ -1,8 +1,9 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchBranches } from '../redux/branchesSlice';
-import { fetchRooms } from '../redux/branchRoomSlice'; // Updated import
+import { fetchRooms } from '../redux/branchRoomSlice';
 import { saveReservation } from '../redux/saveReservationSlice';
+import { clearReservation } from '../redux/addReservationSlice';
 import '../styles/Home.scss';
 import Card from './Card';
 import '../styles/Reservations.css';
@@ -27,6 +28,7 @@ const AddReservation = () => {
 
   const handleSaveReservation = () => {
     dispatch(saveReservation(pendingReservation));
+    dispatch(clearReservation());
   };
 
   return (

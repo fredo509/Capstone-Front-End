@@ -1,17 +1,19 @@
 import { createSlice } from '@reduxjs/toolkit';
 
-// Function to get the userId from local storage
-const getUserIdFromLocalStorage = () => {
-  const userId = localStorage.getItem('userId');
-  return userId ? parseInt(userId, 10) : 0;
-};
+function getCurrentDate() {
+  const currentDate = new Date();
+  const year = currentDate.getFullYear();
+  const month = String(currentDate.getMonth() + 1).padStart(2, '0'); // Months are zero-based, so add 1
+  const day = String(currentDate.getDate()).padStart(2, '0');
+  return `${year}-${month}-${day}`;
+}
 
 const initialState = {
   reservation: {
-    reservation_date: '2023-08-23',
+    reservation_date: getCurrentDate(),
     city: 'New York',
     total_cost: 0,
-    user_id: getUserIdFromLocalStorage(),
+    user_id: 0,
     room_ids: [],
   },
 };
@@ -21,13 +23,8 @@ const addReservationSlice = createSlice({
   initialState,
   reducers: {
     clearReservation: (state) => {
-      state.reservation = {
-        reservation_date: '2023-08-23',
-        city: 'New York',
-        total_cost: 0,
-        user_id: 0,
-        room_ids: [],
-      };
+      state.reservation.room_ids = [];
+      state.reservation.total_cost = 0;
     },
     setReservationDate: (state, action) => {
       state.reservation.reservation_date = action.payload;
