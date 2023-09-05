@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
+import { useNavigate } from 'react-router';
 import { fetchReservations } from '../redux/reservationsSlice';
 import { deleteReservation } from '../redux/reservationsDeleteSlice';
 import '../styles/Reservations.css';
@@ -7,11 +8,13 @@ import '../styles/Home.scss';
 
 function Reservations() {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
   const { reservations } = useSelector((state) => state.reservations);
   const { deletedReservation } = useSelector(
     (state) => state.deleteReservation,
   );
   const userId = localStorage.getItem('userId');
+  console.log(reservations);
 
   useEffect(() => {
     dispatch(fetchReservations(userId));
@@ -20,13 +23,28 @@ function Reservations() {
   const onHanlde = (reservationId, userId) => {
     try {
       dispatch(deleteReservation({ reservationId, userId }));
+      navigate('/');
     } catch (err) {
       throw new Error(err);
     }
   };
 
-  if (!reservations || reservations.length === 0) {
-    return <p className="title">No reservations made</p>;
+  const onHandleButton = () => {
+    navigate('/addReservation');
+  };
+
+  if ((deletedReservation.length > 0 && reservations.length === 0) || reservations.length === 0) {
+    return (
+      <>
+        <div className="home-header">
+          <h1 className="title">My Reservations</h1>
+        </div>
+        <p className="title">No reservations made</p>
+        <div className="btn-container">
+          <button type="button" onClick={() => onHandleButton()} className="button">Reserve Here</button>
+        </div>
+      </>
+    );
   }
 
   return (
@@ -37,14 +55,6 @@ function Reservations() {
       {reservations.map((reservation) => {
         const reservationId = reservation.id;
         const userId = reservation.user_id;
-
-        if (deletedReservation.length > 0) {
-          return (
-            <>
-              <p className="title">No reservations made</p>
-            </>
-          );
-        }
 
         return (
           <div key={reservation.id} className="reservations-container">

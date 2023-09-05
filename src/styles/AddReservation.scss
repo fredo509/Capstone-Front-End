@@ -30,3 +30,20 @@ $gray-color: #474747;
     background-color: $gray-color;
   }
 }
+
+
+.btn-container {
+  text-align: center;
+  
+  .button {
+    font-size: 1.2rem;
+    width: 100px;
+    height: 30px;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 600;
+    color: white;
+    background-color: $green-color;
+    border: none;
+    border-radius: 20px;
+  }
+}
