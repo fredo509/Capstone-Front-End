@@ -3,30 +3,30 @@ $green-color: #97bf11;
 $gray-color: #474747;
 
 .reservation-data-container {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 1.8rem;
+  font-weight: 600;
+  display: flex;
+  justify-content: space-between;
+  padding: 20px 50px;
+  background-color: rgb(238, 238, 238);
+  width: 100%;
+  margin: 25px auto;
+
+  button {
+    font-size: 1.2rem;
+    width: 100px;
+    height: 30px;
     font-family: 'Montserrat', sans-serif;
-    font-size: 1.8rem;
     font-weight: 600;
-    display: flex;
-    justify-content: space-between;
-    padding: 20px 50px;
-    background-color: rgb(238, 238, 238);
-    width: 100%;
-    margin: 25px auto;
+    color: white;
+    background-color: $green-color;
+    border: none;
+    border-radius: 20px;
+  }
 
-    button {
-        font-size: 1.2rem;
-        width: 100px;
-        height: 30px;
-        font-family: 'Montserrat', sans-serif;
-        font-weight: 600;
-        color: white;
-        background-color: $green-color;
-        border: none;
-        border-radius: 20px;
-    }
-
-      button:hover {
-        cursor: pointer;
-        background-color: $gray-color;
-    }
+  button:hover {
+    cursor: pointer;
+    background-color: $gray-color;
+  }
 }
