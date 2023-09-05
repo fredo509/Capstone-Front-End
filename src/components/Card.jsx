@@ -12,7 +12,6 @@ const Card = ({
 }) => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const reservationState = 'reserve';
 
   const onHandleSelect = (id) => {
     dispatch(selectedRoom(id));
@@ -73,11 +72,13 @@ const Card = ({
           </button>
           { showAddToReservationButton && (
           <button
-            onClick={() => dispatch(addRoomIdAndCost(id, cost))}
+            onClick={() => {
+              dispatch(addRoomIdAndCost(id, cost));
+            }}
             type="button"
-            className="reserve-btn"
+            className="select-btn"
           >
-            {reservationState === 'reserve' ? 'Reserved' : 'Reserve'}
+            Add
           </button>
           )}
           { showDeleteButton && (

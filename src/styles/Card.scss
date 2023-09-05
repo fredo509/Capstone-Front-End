@@ -75,6 +75,14 @@ $light-gray-color: #8f8f8f;
         cursor: pointer;
         background-color: $gray-color;
       }
+
+      .reserve-btn {
+        text: 'Reserve';
+      }
+
+      .reserve-btn-dl {
+        text: 'Remove';
+      }
     }
   }
 
