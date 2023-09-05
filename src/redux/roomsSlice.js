@@ -49,7 +49,6 @@ export const fetchRoomsDetails = createAsyncThunk('rooms/fetchRoomsDetails', asy
 });
 
 // POST room
-
 export const createRoom = createAsyncThunk('rooms/createRoom', async ({
   userId, name, photo, cost, description,
 }) => {

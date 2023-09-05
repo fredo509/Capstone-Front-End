@@ -30,6 +30,7 @@ const DeleteRooms = () => {
               description={room.description}
               cost={room.cost}
               photo={room.photo}
+              showDeleteButton
             />
           ))}
         </div>
