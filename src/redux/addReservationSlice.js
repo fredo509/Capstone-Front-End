@@ -1,15 +1,21 @@
 import { createSlice } from '@reduxjs/toolkit';
 
+// Function to get the userId from local storage
+const getUserIdFromLocalStorage = () => {
+  const userId = localStorage.getItem('userId');
+  return userId ? parseInt(userId, 10) : 0;
+};
+
 const initialState = {
   reservation: {
     reservation_date: '2023-08-23',
     city: 'New York',
-    totalCost: 0,
-    user_id: 0,
-    roomIds: [],
+    total_cost: 0,
+    user_id: getUserIdFromLocalStorage(),
+    room_ids: [],
   },
 };
-
+/* eslint-disable camelcase */
 const addReservationSlice = createSlice({
   name: 'addReservation',
   initialState,
@@ -18,9 +24,9 @@ const addReservationSlice = createSlice({
       state.reservation = {
         reservation_date: '2023-08-23',
         city: 'New York',
-        totalCost: 0,
+        total_cost: 0,
         user_id: 0,
-        roomIds: [],
+        room_ids: [],
       };
     },
     setReservationDate: (state, action) => {
@@ -30,25 +36,29 @@ const addReservationSlice = createSlice({
       state.reservation.city = action.payload;
     },
     updateTotal: (state, action) => {
-      state.reservation.totalCost = action.payload;
+      state.reservation.total_cost = action.payload;
     },
     setReservationUserId: (state, action) => {
-      state.reservation.user_id = action.payload;
+      // Parse the payload as an integer
+      state.reservation.user_id = parseInt(action.payload, 10);
     },
     addRoomId: (state, action) => {
       const roomId = action.payload;
-      const { roomIds } = state.reservation;
+      const { room_ids } = state.reservation;
 
-      // If roomIds already contains the roomId, remove it
-      if (roomIds.includes(roomId)) {
-        state.reservation.roomIds = roomIds.filter((id) => id !== roomId);
+      // If room_ids already contains the roomId, remove it
+      if (room_ids.includes(roomId)) {
+        state.reservation.room_ids = room_ids.filter((id) => id !== roomId);
       } else {
-        state.reservation.roomIds.push(roomId);
+        state.reservation.room_ids.push(roomId);
       }
     },
   },
 });
 
-export const { clearReservation, updateTotal, addRoomId } = addReservationSlice.actions;
+export const {
+  clearReservation, updateTotal, addRoomId,
+  setReservationUserId,
+} = addReservationSlice.actions;
 
 export default addReservationSlice.reducer;

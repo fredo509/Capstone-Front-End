@@ -2,9 +2,11 @@ import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchBranches } from '../redux/branchesSlice';
 import { fetchRooms } from '../redux/branchRoomSlice'; // Updated import
+import { saveReservation } from '../redux/saveReservationSlice';
 import '../styles/Home.scss';
 import Card from './Card';
 import '../styles/Reservations.css';
+import '../styles/AddReservation.scss';
 
 const AddReservation = () => {
   const dispatch = useDispatch();
@@ -15,12 +17,16 @@ const AddReservation = () => {
 
   const branches = useSelector((state) => state.branches.data);
   const selectedBranchId = useSelector((state) => state.branchRoom.selectedBranchId);
-  const rooms = useSelector((state) => state.branchRoom.data); // Updated selector
-  const pendingReservation = useSelector((state) => state.pendingReservation.reservation);
+  const rooms = useSelector((state) => state.branchRoom.data);
+  const pendingReservation = useSelector((state) => state.pendingReservation);
 
   const handleBranchChange = (event) => {
     const selectedBranchId = event.target.value;
     dispatch(fetchRooms(selectedBranchId));
+  };
+
+  const handleSaveReservation = () => {
+    dispatch(saveReservation(pendingReservation));
   };
 
   return (
@@ -59,8 +65,16 @@ const AddReservation = () => {
         <div className="reservation-data-container">
           <p>
             Total:
-            {pendingReservation.totalCost}
+            {' '}
+            $
+            {pendingReservation.reservation.total_cost}
           </p>
+          <button
+            type="button"
+            onClick={handleSaveReservation}
+          >
+            Reserve
+          </button>
         </div>
       </section>
     </>

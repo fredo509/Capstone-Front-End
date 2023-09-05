@@ -23,27 +23,28 @@ const Card = ({
     dispatch(deleteRoomReducer(id));
   };
 
+  /* eslint-disable camelcase */
   const addRoomIdAndCost = (roomId, roomCost) => (dispatch, getState) => {
     const state = getState();
-    const { roomIds, totalCost } = state.pendingReservation.reservation;
+    const { room_ids, total_cost } = state.pendingReservation.reservation;
 
     // Check if roomId is already in room_ids
-    if (roomIds.includes(roomId)) {
+    if (room_ids.includes(roomId)) {
       // Room is already selected, subtract its cost
-      const newTotalCost = totalCost - parseFloat(roomCost);
+      const newTotalCost = total_cost - parseFloat(roomCost);
 
       dispatch(addRoomId(roomId));
       dispatch(updateTotal(newTotalCost));
     } else {
       // Room is not selected, add its cost
       console.log('room id does not exist');
-      const newTotalCost = totalCost + parseFloat(roomCost);
+      const newTotalCost = total_cost + parseFloat(roomCost);
 
       dispatch(addRoomId(roomId));
       dispatch(updateTotal(newTotalCost));
     }
 
-    console.log(roomIds);
+    console.log(room_ids);
   };
 
   return (

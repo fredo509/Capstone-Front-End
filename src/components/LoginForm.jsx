@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router';
 import { useDispatch } from 'react-redux';
 import { loginApi, fetchCurrentUser } from '../redux/authActions';
+import { setReservationUserId } from '../redux/addReservationSlice';
 import { useAuth } from '../auth/AuthProvider';
 import '../styles/Forms.css';
 
@@ -19,6 +20,7 @@ function LoginForm() {
       await dispatch(fetchCurrentUser());
       login();
       navigate('/');
+      dispatch(setReservationUserId(localStorage.getItem('userId')));
     } catch (error) {
       console.error(error);
     }

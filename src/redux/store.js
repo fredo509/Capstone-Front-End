@@ -5,6 +5,7 @@ import deleteReservationReducer from './reservationsDeleteSlice';
 import branchesReducer from './branchesSlice';
 import branchRoomReducer from './branchRoomSlice';
 import addReservationReducer from './addReservationSlice';
+import saveReservationReducer from './saveReservationSlice';
 import authReducer from './authActions';
 import usersReducer from './getUser';
 
@@ -18,6 +19,7 @@ const store = configureStore({
     authorization: authReducer,
     users: usersReducer,
     pendingReservation: addReservationReducer,
+    saveReservation: saveReservationReducer,
   },
 });
 
