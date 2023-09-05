@@ -67,3 +67,59 @@ $gray-color: #474747;
     }
   }
 }
+
+// Media query for screens with a width of 425px or smaller
+@media screen and (max-width: 425px) {
+  .navbar {
+    min-width: auto;
+    padding: 3vh 0;
+
+    .navLogo {
+      width: 80px;
+    }
+
+    .navItems {
+      margin-top: 5vh;
+
+      .navItem {
+        width: 100%;
+        a {
+          padding: 10px;
+          width: 100%;
+        }
+      }
+    }
+
+    .navIcons {
+      margin-top: 10vh;
+    }
+  }
+}
+
+// Media query for screens with a width of 768px or smaller
+@media screen and (max-width: 768px) {
+  .navbar {
+    min-width: 20vw;
+    padding: 3vh 0;
+
+    .navLogo {
+      width: 80px;
+    }
+
+    .navItems {
+      margin-top: 5vh;
+
+      .navItem {
+        width: 100%;
+        
+        a {
+          padding: 10px;
+        }
+      }
+    }
+
+    .navIcons {
+      margin-top: 10vh;
+    }
+  }
+}

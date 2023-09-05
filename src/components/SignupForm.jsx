@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router';
 import { useDispatch } from 'react-redux';
 import { signup } from '../redux/authActions';
-import '../styles/Forms.css';
+import '../styles/Forms.scss';
 
 function SignupForm() {
   const navigate = useNavigate();
@@ -17,34 +17,34 @@ function SignupForm() {
   };
 
   return (
-    <div className="form-container">
-      <h2>Sign Up</h2>
-      <div>
-        <input
-          type="text"
-          placeholder="Name"
-          value={name}
-          onChange={(e) => setName(e.target.value)}
-        />
-      </div>
-      <div>
-        <input
-          type="email"
-          placeholder="Email"
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
-        />
-      </div>
-      <div>
-        <input
-          type="password"
-          placeholder="Password"
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-        />
-      </div>
-      <button onClick={handleSignup} type="button">Sign Up</button>
-    </div>
+    <>
+      <section className="login-container">
+        <h2 className="form-title">Sign Up</h2>
+        <div className="form-container">
+          <div className="input-container">
+            <input
+              type="text"
+              placeholder="Name"
+              value={name}
+              onChange={(e) => setName(e.target.value)}
+            />
+            <input
+              type="email"
+              placeholder="Email"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+            />
+            <input
+              type="password"
+              placeholder="Password"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+            />
+          </div>
+          <button onClick={handleSignup} type="button">Sign Up</button>
+        </div>
+      </section>
+    </>
   );
 }
 
