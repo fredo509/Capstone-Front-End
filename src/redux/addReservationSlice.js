@@ -11,7 +11,7 @@ function getCurrentDate() {
 const initialState = {
   reservation: {
     reservation_date: getCurrentDate(),
-    city: 'New York',
+    city: '',
     total_cost: 0,
     user_id: 0,
     room_ids: [],
@@ -55,7 +55,7 @@ const addReservationSlice = createSlice({
 
 export const {
   clearReservation, updateTotal, addRoomId,
-  setReservationUserId,
+  setReservationUserId, setReservationCity,
 } = addReservationSlice.actions;
 
 export default addReservationSlice.reducer;

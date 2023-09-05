@@ -59,6 +59,7 @@ const AddReservation = () => {
                   cost={room.cost}
                   photo={room.photo}
                   showAddToReservationButton
+                  roomCity={room.branch.city}
                 />
               ))}
             </div>

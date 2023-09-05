@@ -4,12 +4,13 @@ import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTwitter, faFacebookF, faInstagram } from '@fortawesome/free-brands-svg-icons';
-import { addRoomId, updateTotal } from '../redux/addReservationSlice';
+import { addRoomId, updateTotal, setReservationCity } from '../redux/addReservationSlice';
 import { deleteRoom, deleteRoomReducer, selectedRoom } from '../redux/roomsSlice';
 import '../styles/Card.scss';
 
 const Card = ({
   id, name, photo, description, cost, showDeleteButton, showAddToReservationButton,
+  roomCity,
 }) => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -27,7 +28,7 @@ const Card = ({
   const [isAdded, setIsAdded] = useState(false);
 
   /* eslint-disable camelcase */
-  const addRoomIdAndCost = (roomId, roomCost) => (dispatch, getState) => {
+  const addRoomIdAndCost = (roomId, roomCost, roomCity) => (dispatch, getState) => {
     const state = getState();
     const { room_ids, total_cost } = state.pendingReservation.reservation;
 
@@ -41,9 +42,10 @@ const Card = ({
       setIsAdded(false);
     } else {
       // Room is not selected, add its cost
-      console.log('room id does not exist');
-      const newTotalCost = total_cost + parseFloat(roomCost);
+      // Check if city is already set, if not add it
+      dispatch(setReservationCity(roomCity));
 
+      const newTotalCost = total_cost + parseFloat(roomCost);
       dispatch(addRoomId(roomId));
       dispatch(updateTotal(newTotalCost));
       setIsAdded(true);
@@ -79,7 +81,7 @@ const Card = ({
           { showAddToReservationButton && (
           <button
             onClick={() => {
-              dispatch(addRoomIdAndCost(id, cost));
+              dispatch(addRoomIdAndCost(id, cost, roomCity));
             }}
             type="button"
             className="select-btn"
@@ -115,11 +117,13 @@ Card.propTypes = {
   id: PropTypes.number.isRequired,
   showDeleteButton: PropTypes.bool, // Define the prop type
   showAddToReservationButton: PropTypes.bool,
+  roomCity: PropTypes.string,
 };
 
 Card.defaultProps = {
   showDeleteButton: false, // Set a default value for showDeleteButton
   showAddToReservationButton: false,
+  roomCity: 'New York',
 };
 
 export default Card;
