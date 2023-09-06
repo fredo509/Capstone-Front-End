@@ -1,0 +1,25 @@
+/* Delete Page */
+
+.delete-container {
+  display: flex;
+  justify-content: center;
+  margin-left: 20%;
+  margin-bottom: 20%;
+}
+
+.delete-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 100px;
+  align-items: center;
+}
+
+.display-card-title {
+  text-align: center;
+  font-size: 2em;
+}
+
+.card-content {
+  text-align: center;
+  font-size: 1.2em;
+}

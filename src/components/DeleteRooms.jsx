@@ -3,7 +3,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { fetchRooms } from '../redux/roomsSlice';
 
 import Card from './Card';
-import '../styles/Reservations.css';
+// import '../styles/Reservations.css';
 
 const DeleteRooms = () => {
   const dispatch = useDispatch();
