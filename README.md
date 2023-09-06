@@ -67,6 +67,10 @@
 
 <br>
 
+### Final Team: 
+
+4 members (all mentioned in the authors section)
+
 ### Key Features <a name="key-features"></a>
 
 - Dynamic Navigation Routes: "Vacay Inn" employs a versatile navigation panel that gracefully manages both public routes (rooms, login, and signup) and exclusive private routes, ensuring secure access to tailored content for authenticated users.
