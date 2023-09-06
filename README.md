@@ -149,8 +149,7 @@ rails s
 
 ### Deployment
 
-- Still needs deployment
-[Visit the deployed site]()
+[Visit the deployed site](https://vacay-inn.onrender.com/)
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
