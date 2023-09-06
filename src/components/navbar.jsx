@@ -45,7 +45,7 @@ const Navbar = () => {
         {token ? (
           <>
             <li className="navItem">
-              <button type="button" onClick={handleLogout}>Logout</button>
+              <button type="button" onClick={handleLogout} className="logout-btn">Logout</button>
             </li>
           </>
         ) : (
