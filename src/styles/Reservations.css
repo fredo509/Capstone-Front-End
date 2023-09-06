@@ -126,7 +126,7 @@ button {
 }
 
 button:hover {
-  background-color: #E6031C;
+  background-color: #e6031c;
   cursor: pointer;
 }
 
@@ -176,5 +176,4 @@ button:hover {
   .reservation-info-section {
     flex-direction: column;
   }
-
 }
