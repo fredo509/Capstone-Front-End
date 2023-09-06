@@ -20,7 +20,7 @@ describe('addReservationSlice reducers', () => {
 
   it('should clear reservation', () => {
     store.dispatch(clearReservation());
-    const reservation = store.getState().addReservation.reservation;
+    const { reservation } = store.getState().addReservation;
     expect(reservation.room_ids).toEqual([]);
     expect(reservation.total_cost).toBe(0);
   });
@@ -28,7 +28,7 @@ describe('addReservationSlice reducers', () => {
   it('should update total cost', () => {
     const newTotal = 100;
     store.dispatch(updateTotal(newTotal));
-    const reservation = store.getState().addReservation.reservation;
+    const { reservation } = store.getState().addReservation;
     expect(reservation.total_cost).toBe(newTotal);
   });
 
@@ -49,14 +49,14 @@ describe('addReservationSlice reducers', () => {
   it('should set reservation user ID', () => {
     const userId = 123;
     store.dispatch(setReservationUserId(userId));
-    const reservation = store.getState().addReservation.reservation;
+    const { reservation } = store.getState().addReservation;
     expect(reservation.user_id).toBe(userId);
   });
 
   it('should set reservation city', () => {
     const city = 'New York';
     store.dispatch(setReservationCity(city));
-    const reservation = store.getState().addReservation.reservation;
+    const { reservation } = store.getState().addReservation;
     expect(reservation.city).toBe(city);
   });
 });
