@@ -36,12 +36,14 @@ function Reservations() {
   if ((deletedReservation.length > 0 && reservations.length === 0) || reservations.length === 0) {
     return (
       <>
-        <div className="home-header">
-          <h1 className="title">My Reservations</h1>
-        </div>
-        <p className="title">No reservations made</p>
-        <div className="btn-container">
-          <button type="button" onClick={() => onHandleButton()} className="button">Reserve Here</button>
+        <div className="noRes-container">
+          <div className="myRes-header">
+            <h1 className="myRes-title">My Reservations</h1>
+          </div>
+          <p className="myRes-brief">No reservations made</p>
+          <div className="btn-container">
+            <button type="button" onClick={() => onHandleButton()} className="button">Reserve Here</button>
+          </div>
         </div>
       </>
     );
@@ -49,7 +51,7 @@ function Reservations() {
 
   return (
     <>
-      <div className="home-header">
+      <div className="myRes-header">
         <h1 className="title">My Reservations</h1>
       </div>
       {reservations.map((reservation) => {
@@ -59,41 +61,46 @@ function Reservations() {
         return (
           <div key={reservation.id} className="reservations-container">
             <div className="reservation-card">
-              <h2>
+              <h2 className="reservation-title">
                 Reservation id:
                 {reservation.id}
               </h2>
               <div className="reservation-info flex">
-                <p>
-                  City:
-                  {reservation.city}
-                </p>
-                <p>
-                  Total Cost: $
-                  {reservation.total_cost}
-                </p>
-                <p>
-                  Reserved at:
-                  {reservation.created_at}
-                </p>
+                <div className="reservation-info-section">
+                  <p>
+                    City:
+                    {reservation.city}
+                  </p>
+                  <p>
+                    Total Cost: $
+                    {reservation.total_cost}
+                  </p>
+                </div>
+                <div className="reservation-info-section">
+                  <p>
+                    Reserved at:
+                  </p>
+                  <p>
+                    {reservation.created_at}
+                  </p>
+                </div>
               </div>
-              <h1>Rooms reserved:</h1>
+              <h2>Rooms reserved:</h2>
               {reservation.rooms.map((room) => (
-                <div key={room.id} className="each-room-reserved flex">
+                <div key={room.id} className="each-room-reserved">
                   <div className="reservation-img">
-                    <p>{room.name}</p>
+                    <h3>{room.name}</h3>
                     <img src={room.photo} alt={room.name} />
                   </div>
-                  <div>
+                  <div className="room-details">
                     <p>
                       Description:
                       {room.description}
                     </p>
-                  </div>
-                  <div>
                     <p>
                       Room Price:
                       {room.cost}
+                      $
                     </p>
                   </div>
                 </div>

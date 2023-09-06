@@ -35,9 +35,9 @@ const AddReservation = () => {
 
   return (
     <>
-      <section className="home-container">
-        <h1 className="home-title">Reserve your Suite</h1>
-        <p className="home-brief">Please select where you want to stay</p>
+      <section className="addRes-container">
+        <h1 className="addRes-title">Reserve your Suite</h1>
+        <p className="addRes-brief">Please select where you want to stay</p>
         <select value={selectedBranchId} onChange={handleBranchChange}>
           <option value="">Select a Branch</option>
           {branches.map((branch) => (
@@ -48,8 +48,8 @@ const AddReservation = () => {
         </select>
         {selectedBranchId && (
           <div>
-            <h2>
-              Our Rooms
+            <h2 className="addRest-title">
+              Select a room
             </h2>
             <div className="react-multi-carousel-item ma-25px">
               {rooms.map((room) => (

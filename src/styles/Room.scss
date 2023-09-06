@@ -1,18 +1,18 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;900&display=swap');
 
-.aling-center {
-  text-align: center;
-}
+/* Mobile First */
 
 .room-content-container {
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
-  height: 90vh;
   font-family: 'Montserrat', sans-serif;
+  margin-left: 25%;
+  height: 90vh;
 
   .room-title {
-    font-size: 4rem;
+    font-size: 3.5rem;
     font-weight: 900;
     text-transform: uppercase;
     color: #474747;
@@ -21,11 +21,80 @@
 
   .room-img-container {
     text-align: center;
-    margin-left: 3%;
   }
 
   .room-img {
-    width: 40%;
-    height: 40%;
+    width: 80%;
+    margin-right: 5%;
+  }
+
+  .room-details {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    p {
+      font-size: 1.5rem;
+      font-weight: 600;
+      color: #474747;
+      margin: 2%;
+    }
+
+    .btn-container {
+      width: 70%;
+
+      button {
+        margin: 5%;
+        padding: 2%;
+        font-size: 1.5rem;
+        font-weight: 600;
+        text-transform: uppercase;
+        border: none;
+        border-radius: 5px;
+        background-color: #97bf11;
+        color: #fff;
+        cursor: pointer;
+        transition: background-color 0.3s ease-in-out;
+
+        &:hover {
+          background-color: #7fae0a;
+        }
+      }
+    }
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .room-content-container {
+    height: 65vh;
+    margin-top: 10%;
+
+    .room-details {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      align-items: center;
+      width: 80%;
+      margin-left: 0;
+
+      p {
+        font-size: 2rem;
+        margin: 2%;
+      }
+
+      .btn-container {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        width: 50%;
+        margin: 0;
+
+        button {
+          margin: 0;
+          padding: 1%;
+          font-size: 1.5rem;
+        }
+      }
+    }
   }
 }

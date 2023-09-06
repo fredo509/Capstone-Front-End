@@ -1,9 +1,8 @@
 import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { fetchRooms } from '../redux/roomsSlice';
-
 import Card from './Card';
-import '../styles/Reservations.css';
+import '../styles/DeleteRooms.scss';
 
 const DeleteRooms = () => {
   const dispatch = useDispatch();
@@ -17,10 +16,10 @@ const DeleteRooms = () => {
 
   return (
     <>
-      <div className="home-header">
-        <h1 className="title">Select a room to delete</h1>
+      <div className="delete-header">
+        <h1 className="delete-title">Select a room to delete</h1>
       </div>
-      <div className="delete-container flex">
+      <div className="delete-container">
         <div className="delete-grid">
           {rooms.map((room) => (
             <Card
