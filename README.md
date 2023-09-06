@@ -189,8 +189,9 @@ To run the project, execute the following command:
 
 👤 **Christian Zambrano**
 
-- LinkedIn: [Cristian Zambrano](https://www.linkedin.com/in/cristian-zamcham/)
 - GitHub: [@zamcham](https://github.com/zamcham)
+- Twitter: [@ZamChamGames](https://twitter.com/zamchamgames)
+- LinkedIn: [Cristian Zambrano](https://www.linkedin.com/in/cristian-zamcham/)
 
 👤 **Fredo St Fleur**
 
@@ -199,16 +200,17 @@ To run the project, execute the following command:
 
 👤 **Jose Luis Vazquez Flores**
 
-- LinkedIn: [Jose Luis Vazquez Flores](https://www.linkedin.com/in/jose-vazquez-178a8225a/)
-- Github: [@jlvFlores](https://github.com/jlvFlores)
+- GitHub: [@jlvFlores](https://github.com/jlvFlores)
+- Twitter: [@JoseVaz44312762](https://twitter.com/JoseVaz44312762)
+- LinkedIn: [Jose (Luis) Vazquez](https://www.linkedin.com/in/jose-luis-vazquez/)
 
 <!-- FUTURE FEATURES -->
 
 ## 🔭 Future Features <a name="future-features"></a>
 
--**Add a robust authentication for the user login** .
--**Display additional Item information** .
--**Improve css design** .
+-**Add a admin dashboard** .
+-**Display additional Room information** .
+-**Improve styling and organice sass files** .
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -236,6 +238,7 @@ If you like this project give us a star ⭐️
 ## 🙏 Acknowledgments <a name="acknowledgements"></a>
 
 Special thanks to our team who made possible the completion of this project.
+Thanks to [Murat Korkmaz](https://www.behance.net/gallery/26425031/Vespa-Responsive-Redesign) for providing the original design.
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
