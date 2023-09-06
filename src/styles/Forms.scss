@@ -32,7 +32,7 @@ $gray-color: #474747;
       flex-direction: column;
       width: 70%;
 
-      input {
+      .input-login {
         margin-top: 10%;
       }
     }
@@ -62,7 +62,7 @@ $gray-color: #474747;
         width: 50%;
 
         input {
-          margin-top: 5%;
+          margin-top: 2%;
         }
       }
     }
@@ -70,6 +70,46 @@ $gray-color: #474747;
     button {
       width: 30%;
       margin-top: 3%;
+    }
+  }
+}
+
+/* Create a Room form */
+
+.create-room-form {
+  margin-top: 5%;
+
+  .input-create {
+    .form-label {
+      margin-bottom: 2%;
+      margin-top: 2%;
+      font-size: 1.5em;
+    }
+
+    .input-create-room {
+      margin-top: 3%;
+    }
+
+    textarea {
+      resize: none;
+    }
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .create-room-form {
+    margin-top: 1%;
+
+    .input-create {
+      .form-label {
+        margin-bottom: 1%;
+        margin-top: 1%;
+        font-size: 1.5em;
+      }
+
+      .input-create-room {
+        margin-top: 1%;
+      }
     }
   }
 }

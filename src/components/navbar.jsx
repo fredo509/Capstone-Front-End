@@ -41,7 +41,7 @@ const Navbar = () => {
                   <NavLink to="/deleteRooms" activeClassName="active">Delete Rooms</NavLink>
                 </li>
                 <li className="navItem">
-                  <NavLink to="/addRooms" activeClassName="active">Add Rooms</NavLink>
+                  <NavLink to="/addRoom" activeClassName="active">Add Rooms</NavLink>
                 </li>
               </>
             )}

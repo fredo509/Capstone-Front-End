@@ -6,7 +6,7 @@ import { deleteReservation } from '../redux/reservationsDeleteSlice';
 import '../styles/Reservations.css';
 import '../styles/Home.scss';
 
-function Reservations() {
+const Reservations = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const { reservations } = useSelector((state) => state.reservations);
@@ -118,6 +118,6 @@ function Reservations() {
       })}
     </>
   );
-}
+};
 
 export default Reservations;

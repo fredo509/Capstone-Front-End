@@ -15,8 +15,9 @@ import Room from './components/Room';
 import LoginForm from './components/LoginForm';
 import PrivateRoute from './components/PrivateRoute';
 import SignupForm from './components/SignupForm';
+import AddRoom from './components/AddRoom';
 
-function App() {
+const App = () => {
   useEffect(() => {
     const token = localStorage.getItem('tokenKey');
     if (token) {
@@ -70,6 +71,16 @@ function App() {
                 )
               }
             />
+            <Route
+              path="/addRoom"
+              element={
+                (
+                  <PrivateRoute>
+                    <AddRoom />
+                  </PrivateRoute>
+                )
+              }
+            />
             <Route path="/loginForm" element={<LoginForm />} />
             <Route path="/signupForm" element={<SignupForm />} />
           </Routes>
@@ -77,6 +88,6 @@ function App() {
       </AuthProvider>
     </BrowserRouter>
   );
-}
+};
 
 export default App;

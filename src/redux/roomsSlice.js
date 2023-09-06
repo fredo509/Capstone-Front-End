@@ -49,18 +49,31 @@ export const fetchRoomsDetails = createAsyncThunk('rooms/fetchRoomsDetails', asy
 });
 
 // POST room
+/* eslint-disable camelcase */
 export const createRoom = createAsyncThunk('rooms/createRoom', async ({
-  userId, name, photo, cost, description,
+  name, photo, cost, description, guest, beds, branch_id,
 }) => {
+  const token = localStorage.getItem('tokenKey');
+
   const payload = {
-    userId,
     name,
     photo,
     cost,
     description,
+    guest,
+    beds,
+    branch_id,
   };
-  const response = await axios.post(`${url}/rooms`, payload);
-  return response.data;
+  try {
+    const response = await axios.post(`${url}/rooms`, payload, {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    });
+    return response.data;
+  } catch (error) {
+    throw new Error(error);
+  }
 });
 
 // Delete Room

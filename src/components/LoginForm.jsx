@@ -7,7 +7,7 @@ import { useAuth } from '../auth/AuthProvider';
 import '../styles/Forms.scss';
 import '../styles/Home.scss';
 
-function LoginForm() {
+const LoginForm = () => {
   const { login } = useAuth();
   const navigate = useNavigate();
   const dispatch = useDispatch();
@@ -36,12 +36,14 @@ function LoginForm() {
             <input
               type="email"
               placeholder="Email"
+              className="input-login"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
             />
             <input
               type="password"
               placeholder="Password"
+              className="input-login"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
             />
@@ -51,6 +53,6 @@ function LoginForm() {
       </section>
     </>
   );
-}
+};
 
 export default LoginForm;

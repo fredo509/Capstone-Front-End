@@ -4,7 +4,7 @@ import { useDispatch } from 'react-redux';
 import { signup } from '../redux/authActions';
 import '../styles/Forms.scss';
 
-function SignupForm() {
+const SignupForm = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const [name, setName] = useState('');
@@ -25,18 +25,21 @@ function SignupForm() {
             <input
               type="text"
               placeholder="Name"
+              className="input-login"
               value={name}
               onChange={(e) => setName(e.target.value)}
             />
             <input
               type="email"
               placeholder="Email"
+              className="input-login"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
             />
             <input
               type="password"
               placeholder="Password"
+              className="input-login"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
             />
@@ -46,6 +49,6 @@ function SignupForm() {
       </section>
     </>
   );
-}
+};
 
 export default SignupForm;
