@@ -9,6 +9,7 @@ import { useAuth } from '../auth/AuthProvider';
 
 const Navbar = () => {
   const token = localStorage.getItem('tokenKey');
+  const role = localStorage.getItem('userRole');
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const { logout } = useAuth();
@@ -34,12 +35,16 @@ const Navbar = () => {
             <li className="navItem">
               <NavLink to="/reservations" activeClassName="active">My Reservations</NavLink>
             </li>
-            <li className="navItem">
-              <NavLink to="/deleteRooms" activeClassName="active">Delete Rooms</NavLink>
-            </li>
-            <li className="navItem">
-              <NavLink to="/addRooms" activeClassName="active">Add Rooms</NavLink>
-            </li>
+            {role === 'admin' && (
+              <>
+                <li className="navItem">
+                  <NavLink to="/deleteRooms" activeClassName="active">Delete Rooms</NavLink>
+                </li>
+                <li className="navItem">
+                  <NavLink to="/addRooms" activeClassName="active">Add Rooms</NavLink>
+                </li>
+              </>
+            )}
           </>
         )}
         {token ? (
