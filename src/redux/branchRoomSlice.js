@@ -1,4 +1,3 @@
-// branchRoomSlice.js
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
 
@@ -9,11 +8,13 @@ const initialState = {
   selectedBranchId: '',
 };
 
+/* Fetch rooms */
 export const fetchRooms = createAsyncThunk('branchRoom/fetchRooms', async (branchId) => {
-  const response = await axios.get(`http://localhost:4000/rooms?branch_id=${branchId}`);
+  const response = await axios.get(`https://rails-b62y.onrender.com/rooms?branch_id=${branchId}`);
   return response.data;
 });
 
+/* Reducer */
 const branchRoomSlice = createSlice({
   name: 'branchRoom',
   initialState,

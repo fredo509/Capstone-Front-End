@@ -2,14 +2,16 @@ import axios from 'axios';
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 
 const initialState = {
-  data: [], // Initialize 'data' as an empty array for branches
+  data: [],
   status: 'idle',
   error: null,
   selectedBranchRooms: [],
 };
 
-const url = 'http://localhost:4000';
+/* Api URL */
+const url = 'https://rails-b62y.onrender.com';
 
+/* Fetch hotel branches */
 export const fetchBranches = createAsyncThunk('branches/fetchBranches', async () => {
   const token = localStorage.getItem('tokenKey');
   try {
@@ -29,6 +31,7 @@ export const fetchBranches = createAsyncThunk('branches/fetchBranches', async ()
   }
 });
 
+/* Reducer */
 export const branchesSlice = createSlice({
   name: 'branches',
   initialState,

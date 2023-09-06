@@ -6,7 +6,7 @@ const initialState = {
   status: 'idle',
 };
 
-const url = 'http://localhost:4000';
+const url = 'https://rails-b62y.onrender.com';
 
 // Fetch data from reservations table
 
@@ -33,6 +33,7 @@ export const fetchReservations = createAsyncThunk(
   },
 );
 
+/* Post new reservation */
 export const createReservation = createAsyncThunk(
   'reservations/createReservation',
   async ({ userId, reservationData }) => {

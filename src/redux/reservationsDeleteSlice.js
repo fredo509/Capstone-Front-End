@@ -7,7 +7,7 @@ const initialState = {
   loading: false,
 };
 
-const url = 'http://localhost:4000';
+const url = 'https://rails-b62y.onrender.com';
 
 // Delete data from the reservations table
 

@@ -1,6 +1,6 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 
-const baseURL = 'http://localhost:4000/users/';
+const baseURL = 'https://rails-b62y.onrender.com/users/';
 
 // Thunk to make the POST request
 // Modify the saveReservation thunk

@@ -7,7 +7,8 @@ export const initialState = {
   users: [],
 };
 
-const url = 'http://localhost:4000';
+/* API Url */
+const url = 'https://rails-b62y.onrender.com';
 
 // Fetch Current User information
 
@@ -33,6 +34,7 @@ export const fetchUsers = createAsyncThunk('users/fetchUsers', async () => {
   }
 });
 
+/* Reducer */
 const usersSlice = createSlice({
   name: 'users',
   initialState,

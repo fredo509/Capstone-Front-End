@@ -8,10 +8,10 @@ const initialState = {
   status: 'idle',
 };
 
+/* API Url */
+const url = 'https://rails-b62y.onrender.com';
+
 // Fetch Rooms
-
-const url = 'http://localhost:4000';
-
 export const fetchRooms = createAsyncThunk('rooms/fetchRooms', async () => {
   const token = localStorage.getItem('tokenKey');
 

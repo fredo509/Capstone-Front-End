@@ -5,21 +5,26 @@ const initialState = {
   user: null,
 };
 
+/* Manage success login */
 export const loginSuccess = (token) => ({
   type: 'LOGIN_SUCCESS',
   payload: { token },
 });
 
+/* Manage success signup */
 export const signupSuccess = () => ({
   type: 'SIGNUP_SUCCESS',
 });
 
+/* Manage success logout */
 export const logoutSuccess = () => ({
   type: 'LOGOUT',
 });
 
-const url = 'http://localhost:4000/';
+/* API Url */
+const url = 'https://rails-b62y.onrender.com/';
 
+/* Login request */
 export const loginApi = (email, password) => async (dispatch) => {
   const requestBody = {
     user: {
@@ -41,6 +46,7 @@ export const loginApi = (email, password) => async (dispatch) => {
   }
 };
 
+/* Signup request */
 export const signup = ({ name, email, password }) => async () => {
   const requestBody = {
     user: {
@@ -57,6 +63,7 @@ export const signup = ({ name, email, password }) => async () => {
   }
 };
 
+/* Destroy session */
 export const logoutApi = () => (dispatch) => {
   localStorage.removeItem('tokenKey');
   localStorage.removeItem('userId');
@@ -64,6 +71,7 @@ export const logoutApi = () => (dispatch) => {
   dispatch({ type: 'LOGOUT' });
 };
 
+/* Getting current user data */
 export const fetchCurrentUser = () => async (dispatch, getState) => {
   const { token } = getState().authorization;
   try {
@@ -84,6 +92,7 @@ export const fetchCurrentUser = () => async (dispatch, getState) => {
   }
 };
 
+/* Reducer */
 const authReducer = (state = initialState, action) => {
   switch (action.type) {
     case 'LOGIN_SUCCESS':
