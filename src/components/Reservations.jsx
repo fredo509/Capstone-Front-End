@@ -66,20 +66,24 @@ function Reservations() {
                 {reservation.id}
               </h2>
               <div className="reservation-info flex">
-                <p>
-                  City:
-                  {reservation.city}
-                </p>
-                <p>
-                  Total Cost: $
-                  {reservation.total_cost}
-                </p>
-                <p>
-                  Reserved at:
-                </p>
-                <p>
-                  {reservation.created_at}
-                </p>
+                <div className="reservation-info-section">
+                  <p>
+                    City:
+                    {reservation.city}
+                  </p>
+                  <p>
+                    Total Cost: $
+                    {reservation.total_cost}
+                  </p>
+                </div>
+                <div className="reservation-info-section">
+                  <p>
+                    Reserved at:
+                  </p>
+                  <p>
+                    {reservation.created_at}
+                  </p>
+                </div>
               </div>
               <h2>Rooms reserved:</h2>
               {reservation.rooms.map((room) => (

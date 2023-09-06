@@ -49,7 +49,7 @@ const AddReservation = () => {
         {selectedBranchId && (
           <div>
             <h2 className="addRest-title">
-              Our Rooms
+              Select a room
             </h2>
             <div className="react-multi-carousel-item ma-25px">
               {rooms.map((room) => (

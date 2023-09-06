@@ -13,8 +13,7 @@
 }
 
 .myRes-title {
-  margin-top: 5%;
-  margin-bottom: 2%;
+  margin: 2vh auto;
   font-size: 2rem;
   font-weight: 900;
   text-transform: uppercase;
@@ -90,6 +89,13 @@
   margin-top: 1em;
 }
 
+.reservation-info-section {
+  font-family: 'Montserrat', sans-serif;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
 .reservation-img img {
   width: 100%;
 }
@@ -105,6 +111,23 @@
   font-size: 1.1em;
   letter-spacing: 0.1rem;
   font-weight: 500;
+}
+
+button {
+  font-size: 1.2rem;
+  width: 100px;
+  height: 30px;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 600;
+  color: white;
+  background-color: #97bf11;
+  border: none;
+  border-radius: 20px;
+}
+
+button:hover {
+  background-color: #E6031C;
+  cursor: pointer;
 }
 
 @media screen and (min-width: 427px) and (max-width: 768px) {
@@ -149,4 +172,9 @@
   .reservation-img img {
     width: 50%;
   }
+
+  .reservation-info-section {
+    flex-direction: column;
+  }
+
 }
