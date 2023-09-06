@@ -1,0 +1,156 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;900&display=swap');
+
+/* Mobile First */
+
+.room-content-container {
+  font-family: 'Montserrat', sans-serif;
+  margin-left: 25%;
+  height: 90vh;
+
+  .room-title {
+    font-size: 3.5rem;
+    font-weight: 900;
+    text-transform: uppercase;
+    color: #474747;
+    letter-spacing: 0.5rem;
+  }
+
+  .room-img {
+    width: 100%;
+  }
+
+  .room-specs {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: 10%;
+
+    p {
+      font-size: 1.5rem;
+      font-weight: 600;
+      color: #474747;
+      margin: 2%;
+    }
+
+    .btn-container {
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+
+      button {
+        margin: 5%;
+        padding: 2%;
+        font-size: 1.5rem;
+        font-weight: 600;
+        text-transform: uppercase;
+        border: none;
+        border-radius: 5px;
+        background-color: #97bf11;
+        color: #fff;
+        cursor: pointer;
+        transition: background-color 0.3s ease-in-out;
+
+        &:hover {
+          background-color: #7fae0a;
+        }
+      }
+    }
+  }
+}
+
+@media screen and (min-width: 768px) and (max-width: 1024px) {
+  .room-content-container {
+    height: 65vh;
+    margin-top: 10%;
+
+    .room-specs {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-evenly;
+
+      .room-img-container {
+        width: 80%;
+        margin-right: 5%;
+
+        .room-img {
+          width: 100%;
+        }
+      }
+
+      .room-detail-text {
+        width: 30%;
+        margin-right: 2%;
+
+        p {
+          font-size: 2rem;
+          letter-spacing: 0.1rem;
+        }
+      }
+
+      .btn-container {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        align-items: center;
+        margin-top: 10%;
+        width: 100%;
+
+        button {
+          width: 60%;
+          margin: 0;
+          padding: 1%;
+          margin-top: 2%;
+          font-size: 1.5rem;
+        }
+      }
+    }
+  }
+}
+
+@media screen and (min-width: 1024px) {
+  .room-content-container {
+    height: 65vh;
+    margin-top: 10%;
+
+    .room-specs {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-evenly;
+
+      .room-img-container {
+        width: 80%;
+        margin-right: 5%;
+
+        .room-img {
+          width: 100%;
+        }
+      }
+
+      .room-detail-text {
+        width: 30%;
+        margin-right: 2%;
+
+        p {
+          font-size: 2rem;
+          letter-spacing: 0.1rem;
+        }
+      }
+
+      .btn-container {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        margin-top: 10%;
+        width: 100%;
+
+        button {
+          width: 40%;
+          margin: 0;
+          padding: 1%;
+          font-size: 1.5rem;
+        }
+      }
+    }
+  }
+}

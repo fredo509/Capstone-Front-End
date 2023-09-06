@@ -1,0 +1,145 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;900&display=swap');
+
+$green-color: #97bf11;
+$gray-color: #474747;
+$light-gray-color: #8f8f8f;
+
+.home-container {
+  margin-left: 250px;
+  height: 100vh;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Montserrat', sans-serif;
+
+  .home-title {
+    font-size: 4rem;
+    font-weight: 900;
+    text-transform: uppercase;
+    color: $gray-color;
+    letter-spacing: 0.5rem;
+  }
+
+  .home-brief {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: $light-gray-color;
+    margin: 2vh 0;
+    text-transform: capitalize;
+  }
+
+  .react-multi-carousel-list {
+    width: 100%;
+  }
+
+  .react-multi-carousel-track {
+    margin: 0 auto;
+  }
+
+  .react-multi-carousel-item {
+    align-items: center;
+    display: flex;
+    justify-content: center;
+
+    .display-card-container {
+      margin: 0 35px;
+    }
+  }
+
+  .react-multi-carousel-item .delete-btn {
+    display: none;
+  }
+
+  .react-multiple-carousel__arrow {
+    width: 100px;
+    background-color: $green-color;
+    color: white;
+    cursor: pointer;
+    padding: 20px;
+    transition: all 0.3s ease-in-out;
+    top: 50%;
+    z-index: 5;
+    border-radius: 0;
+  }
+
+  .react-multiple-carousel__arrow--left {
+    left: 0;
+    border-top-right-radius: 50px;
+    border-bottom-right-radius: 50px;
+    z-index: 1;
+  }
+
+  .react-multiple-carousel__arrow--right {
+    right: 0;
+    border-top-left-radius: 50px;
+    border-bottom-left-radius: 50px;
+    z-index: 1;
+  }
+}
+
+// Media query for screens with a width of 425px or smaller
+@media screen and (max-width: 425px) {
+  .home-container {
+    margin-left: 20%;
+    padding: 0 10px;
+
+    .home-title {
+      font-size: 3rem;
+      letter-spacing: 0.3rem;
+    }
+
+    .home-brief {
+      font-size: 1.2rem;
+      width: 70%;
+    }
+
+    .react-multi-carousel-item {
+      .display-card-container {
+        margin: 0 10px;
+
+        p {
+          font-weight: 700;
+        }
+      }
+    }
+
+    .react-multiple-carousel__arrow {
+      width: 50px;
+      padding: 10px;
+    }
+  }
+}
+
+// Media query for screens with a width of 768px or smaller
+@media screen and (max-width: 768px) {
+  .home-container {
+    margin-left: 20%;
+    padding: 0 10px;
+
+    .home-title {
+      font-size: 3rem;
+      letter-spacing: 0.3rem;
+    }
+
+    .home-brief {
+      font-size: 1.2rem;
+    }
+
+    .react-multi-carousel-item {
+      .display-card-container {
+        margin: 0 10px;
+
+        p {
+          font-weight: 700;
+        }
+      }
+    }
+
+    .react-multiple-carousel__arrow {
+      width: 50px;
+      padding: 10px;
+    }
+  }
+}
