@@ -11,10 +11,9 @@ const Room = () => {
 
   const { roomsInfo } = useSelector((state) => state.rooms);
 
-  // Navigate to reservation Item
-  // const onHandleReserve = (id) => {
-  //   navigate(`/reserveRoom/${id}`)
-  // }
+  const onHandleReserve = () => {
+    navigate('/addReservation');
+  };
 
   const onNavigateBack = () => {
     navigate(-1);
@@ -26,20 +25,23 @@ const Room = () => {
 
   return (
     <section className="room-content-container">
-      <div className="room-img-container">
-        <img src={roomsInfo.photo} alt={roomsInfo.name} className="room-img" />
-      </div>
+      <h2 className="room-title">
+        {roomsInfo.name}
+      </h2>
       <div className="room-details">
-        <h2 className="room-title">
-          {roomsInfo.name}
-        </h2>
+        <div className="room-img-container">
+          <img src={roomsInfo.photo} alt={roomsInfo.name} className="room-img" />
+        </div>
         <p>{roomsInfo.description}</p>
         <p>
           Price:
           {roomsInfo.cost}
           $
         </p>
-        <button onClick={onNavigateBack} type="button">Back</button>
+        <div className="btn-container">
+          <button onClick={onNavigateBack} type="button">Back</button>
+          <button onClick={onHandleReserve} type="button">Reserve</button>
+        </div>
       </div>
     </section>
   );
