@@ -25,22 +25,32 @@ const Room = () => {
 
   return (
     <section className="room-content-container">
-      <h2 className="room-title">
-        {roomsInfo.name}
-      </h2>
-      <div className="room-details">
+      <div className="room-specs">
         <div className="room-img-container">
           <img src={roomsInfo.photo} alt={roomsInfo.name} className="room-img" />
         </div>
-        <p>{roomsInfo.description}</p>
-        <p>
-          Price:
-          {roomsInfo.cost}
-          $
-        </p>
-        <div className="btn-container">
-          <button onClick={onNavigateBack} type="button">Back</button>
-          <button onClick={onHandleReserve} type="button">Reserve</button>
+        <div className="room-detail-text">
+          <h2 className="room-title">
+            {roomsInfo.name}
+          </h2>
+          <p>{roomsInfo.description}</p>
+          <p>
+            Beds:
+            {roomsInfo.beds}
+          </p>
+          <p>
+            Capacity:
+            {roomsInfo.guest}
+          </p>
+          <p>
+            Price:
+            {roomsInfo.cost}
+            $
+          </p>
+          <div className="btn-container">
+            <button onClick={onNavigateBack} type="button">Back</button>
+            <button onClick={onHandleReserve} type="button">Reserve</button>
+          </div>
         </div>
       </div>
     </section>
